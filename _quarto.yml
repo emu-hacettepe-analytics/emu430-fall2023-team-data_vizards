@@ -1,0 +1,38 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "xxx' Project Lab"
+  navbar:
+    search: true
+    left:
+      - text: Home
+        href: index.qmd
+      - text: Data
+        href: data.qmd
+      - text: Analysis
+        href: analysis.qmd
+
+            
+    tools:
+      - icon: github
+        href: https://twitter.com
+
+  page-navigation: true
+  back-to-top-navigation: true
+  page-footer:
+    center: "Hacettepe IE - EMU 430 - Fall 2023" 
+    border: true
+format:
+  html:
+    toc: true
+    toc-location: left
+    theme: 
+      light: simplex 
+      dark: cyborg
+    css: styles.css
+
+
+editor: visual
+

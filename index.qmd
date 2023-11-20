@@ -1,0 +1,24 @@
+---
+title: "Team XXX"
+sidebar: false 
+---
+
+This is our project webpage.
+
+Please stay tuned to follow our project activities.
+
+This is our template.
+
+# Team Members
+
+1.  [Edin_Džeko](https://tr.wikipedia.org/wiki/Edin_D%C5%BEeko)
+
+2.  [Dušan Tadić](https://tr.wikipedia.org/wiki/Du%C5%A1an_Tadi%C4%87)
+
+3.  [Frederico Rodrigues de Paula Santos](https://tr.wikipedia.org/wiki/Fred_(1993_do%C4%9Fumlu_futbolcu))
+
+4.  [Sebastian Szymański](https://tr.wikipedia.org/wiki/Sebastian_Szyma%C5%84ski)
+
+# Project Topic
+
+# Data Set
