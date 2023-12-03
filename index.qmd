@@ -1,5 +1,5 @@
 ---
-title: "Team XXX"
+title: "Team Data Vizards"
 sidebar: false 
 ---
 
@@ -11,13 +11,17 @@ This is our template.
 
 # Team Members
 
-1.  [Edin_Džeko](https://tr.wikipedia.org/wiki/Edin_D%C5%BEeko)
+1.  [Şadiye Öztürk](https://emu-hacettepe-analytics.github.io/emu430-fall2023-sadiye-1/)
 
-2.  [Dušan Tadić](https://tr.wikipedia.org/wiki/Du%C5%A1an_Tadi%C4%87)
+2.  [Melike Nur Kutlusan](https://emu-hacettepe-analytics.github.io/emu430-fall2023-melikekutlusan/)
 
-3.  [Frederico Rodrigues de Paula Santos](https://tr.wikipedia.org/wiki/Fred_(1993_do%C4%9Fumlu_futbolcu))
+3.  [Zeynep Tuncaboylu](https://emu-hacettepe-analytics.github.io/emu430-fall2023-zeyneptnc/)
 
-4.  [Sebastian Szymański](https://tr.wikipedia.org/wiki/Sebastian_Szyma%C5%84ski)
+4.  [Beyzanur Nas](https://emu-hacettepe-analytics.github.io/emu430-fall2023-beyzanurnas/)
+
+5.  [Duygu Eken](https://github.com/emu-hacettepe-analytics/emu430-fall2023-dygekn)
+
+6.  [Melek Er](https://github.com/emu-hacettepe-analytics/emu430-fall2023-Meleker.git)
 
 # Project Topic
 
