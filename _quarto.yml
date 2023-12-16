@@ -4,7 +4,7 @@ project:
 
 website:
 
-  title: "Data Vizards Project Lab"
+  title: "DataVizards Project Lab"
 
   navbar:
     search: true
