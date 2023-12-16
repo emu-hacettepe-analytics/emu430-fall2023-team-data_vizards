@@ -2,9 +2,7 @@
 title: "Data"
 ---
 
-[data](https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-data_vizards/raw/master/Dataframe/migration_data.RData)
-
-Data source: xxx
+Data source: xxx(tüik websitesi eklenecek)
 
 ```{r}
 library(readxl)
@@ -27,6 +25,5 @@ for (i in 1:nrow(population)) {
     }
   }
 }
-
 
 ```
