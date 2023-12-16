@@ -9,10 +9,10 @@ library(readxl)
 
 population <-read_excel("~/DataVizards_FinalDataFrame.xlsx")
 
-population
-
 region26 <- read_excel("~/DataVizards_FinalDataFrame.xlsx", sheet = "26 Bölge")
-region26
+
+migration<- read_excel("~/DataVizards_FinalDataFrame.xlsx", sheet = "Göç Bilgileri")
+
 
 population$`Bölge 2 İd`<- ""
 for (i in 1:nrow(population)) {

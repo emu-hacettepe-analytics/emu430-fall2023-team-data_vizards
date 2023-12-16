@@ -174,60 +174,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span><span class="fu">read_excel</span>(<span class="st">"~/DataVizards_FinalDataFrame.xlsx"</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>population</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 81 × 31
-      ID City         `Region ID` Regions `Toplam Nüfus`   Male Female `0-4 Yaş`
-   &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;            &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;
- 1     1 Adana        A           Akdeni…        2263373 1.13e6 1.13e6    165518
- 2     2 Adıyaman     GD          Güneyd…         447227 2.24e5 2.23e5     43532
- 3     3 Afyonkarahi… E           Ege Bö…         453835 2.26e5 2.28e5     30685
- 4     4 Ağrı         D           Doğu A…         309256 1.58e5 1.51e5     34398
- 5     5 Amasya       K           Karade…         247980 1.23e5 1.25e5     14770
- 6     6 Ankara       I           İç Ana…        5747325 2.84e6 2.90e6    349381
- 7     7 Antalya      A           Akdeni…        2619832 1.31e6 1.31e6    162718
- 8     8 Artvin       K           Karade…         108181 5.46e4 5.36e4      6902
- 9     9 Aydın        E           Ege Bö…        1134031 5.63e5 5.71e5     64764
-10    10 Balıkesir    M           Marmar…        1250610 6.26e5 6.25e5     61415
-# ℹ 71 more rows
-# ℹ 23 more variables: `5-9 Yaş` &lt;dbl&gt;, `10-14 Yaş` &lt;dbl&gt;, `15-19 Yaş` &lt;dbl&gt;,
-#   `20-24 Yaş` &lt;dbl&gt;, `25-29 Yaş` &lt;dbl&gt;, `30-34 Yaş` &lt;dbl&gt;, `35-39 Yaş` &lt;dbl&gt;,
-#   `40-44 Yaş` &lt;dbl&gt;, `Diğer Yaş` &lt;dbl&gt;, Bilinmeyen &lt;dbl&gt;, Doktora &lt;dbl&gt;,
-#   İlköğretim &lt;dbl&gt;, İlkokul &lt;dbl&gt;, Lise &lt;dbl&gt;,
-#   `Okuma Yazma Bilen Fakat Bir Okul Bitirmeyen` &lt;dbl&gt;,
-#   `Okuma Yazma Bilmeyen` &lt;dbl&gt;, Ortaokul &lt;dbl&gt;, `Yüksek Lisans` &lt;dbl&gt;, …</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>region26 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"~/DataVizards_FinalDataFrame.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"26 Bölge"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>region26</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 26 × 5
-   Bölge                      `Bölge 2 İd` `15+ İşgücü(Bin)` `15-64 İşgücü(Bin)`
-   &lt;chr&gt;                      &lt;chr&gt;                    &lt;dbl&gt;               &lt;dbl&gt;
- 1 Adana, Mersin              TR62                      1579                1528
- 2 Ağrı, Kars, Iğdır, Ardahan TRA2                       383                 369
- 3 Ankara                     TR51                      2341                2308
- 4 Antalya, Isparta, Burdur   TR61                      1425                1380
- 5 Aydın, Denizli, Muğla      TR32                      1349                1296
- 6 Balıkesir, Çanakkale       TR22                       718                 687
- 7 Bursa, Eskişehir, Bilecik  TR41                      1742                1703
- 8 Erzurum, Erzincan, Bayburt TRA1                       377                 362
- 9 Gaziantep, Adıyaman, Kilis TRC1                       969                 949
-10 Hatay, Kahramanmaraş, Osm… TR63                      1154                1127
-# ℹ 16 more rows
-# ℹ 1 more variable:
-#   `Hanehalkı Kullanılabilir Gelire Göre(Gini Katsayısı)` &lt;dbl&gt;</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>population<span class="sc">$</span><span class="st">`</span><span class="at">Bölge 2 İd</span><span class="st">`</span><span class="ot">&lt;-</span> <span class="st">""</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(population)) {</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  city <span class="ot">&lt;-</span> population<span class="sc">$</span>City[i]</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(region26<span class="sc">$</span>Bölge)) {</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">grepl</span>(city, region26<span class="sc">$</span>Bölge[j])) {</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      population<span class="sc">$</span><span class="st">`</span><span class="at">Bölge 2 İd</span><span class="st">`</span>[i] <span class="ot">&lt;-</span> <span class="fu">paste</span>(region26<span class="sc">$</span><span class="st">`</span><span class="at">Bölge 2 İd</span><span class="st">`</span>[j])</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span> </span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>region26 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"~/DataVizards_FinalDataFrame.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"26 Bölge"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>migration<span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"~/DataVizards_FinalDataFrame.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Göç Bilgileri"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>population<span class="sc">$</span><span class="st">`</span><span class="at">Bölge 2 İd</span><span class="st">`</span><span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(population)) {</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  city <span class="ot">&lt;-</span> population<span class="sc">$</span>City[i]</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(region26<span class="sc">$</span>Bölge)) {</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">grepl</span>(city, region26<span class="sc">$</span>Bölge[j])) {</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>      population<span class="sc">$</span><span class="st">`</span><span class="at">Bölge 2 İd</span><span class="st">`</span>[i] <span class="ot">&lt;-</span> <span class="fu">paste</span>(region26<span class="sc">$</span><span class="st">`</span><span class="at">Bölge 2 İd</span><span class="st">`</span>[j])</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span> </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
