@@ -2,7 +2,7 @@
 title: "Data"
 ---
 
-Data source: xxx(tüik websitesi eklenecek)
+Data source: [TÜİK](https://biruni.tuik.gov.tr/medas/?kn=95&locale=tr)
 
 ```{r}
 library(readxl)
