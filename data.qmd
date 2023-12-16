@@ -2,8 +2,9 @@
 title: "Data"
 ---
 
+[data](https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-data_vizards/raw/master/Dataframe/migration_data.RData)
+
 Data source: xxx
-<a href=""C:\Users\sadiy\OneDrive\Belgeler\GitHub\emu430-fall2023-team-data_vizards\Dataframe"" download>Population Data (İndir)</a>
 
 ```{r}
 library(readxl)
