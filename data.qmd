@@ -4,7 +4,7 @@ title: "Data"
 
 Data source: xxx
 
-[Population Data](C:\Users\sadiy\OneDrive\Belgeler\GitHub\emu430-fall2023-team-data_vizards\population_data.RData)
+[Population Data](C:\Users\sadiy\OneDrive\Belgeler\GitHub\emu430-fall2023-team-data_vizards\datas)
 
 ```{r}
 library(readxl)
