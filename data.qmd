@@ -3,8 +3,7 @@ title: "Data"
 ---
 
 Data source: xxx
-
-[Population Data](C:\Users\sadiy\OneDrive\Belgeler\GitHub\emu430-fall2023-team-data_vizards\datas)
+<a href=""C:\Users\sadiy\OneDrive\Belgeler\GitHub\emu430-fall2023-team-data_vizards\Dataframe"" download>Population Data (İndir)</a>
 
 ```{r}
 library(readxl)
@@ -27,5 +26,6 @@ for (i in 1:nrow(population)) {
     }
   }
 }
+
 
 ```
