@@ -3,11 +3,9 @@ project:
   output-dir: docs
 
 website:
-<<<<<<< HEAD
+
   title: "Data Vizards Project Lab"
-=======
-  title: "DataVizards' Project Lab"
->>>>>>> e4409ec36fcf34ee558b03fa4ba4e23dedf35524
+
   navbar:
     search: true
     left:
