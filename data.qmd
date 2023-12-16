@@ -4,7 +4,7 @@ title: "Data"
 
 Data source: [TÜİK](https://biruni.tuik.gov.tr/medas/?kn=95&locale=tr)
 
---\> In this code, we create id column for cities in population dataset by using 26 region dataset. Our aim is to have common area (column) for all the datasets (population, region26 and migration) to study on the datasets comfortable.
+--\> In this code, we create id column for cities in population data set by using 26 region data set. Our aim is to have common area (column) for all the data sets (population, region26 and migration) to study on the data sets comfortable.
 
 ```{r}
 library(readxl)
