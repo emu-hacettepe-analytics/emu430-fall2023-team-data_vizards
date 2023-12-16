@@ -24,5 +24,5 @@ This is our template.
 6.  [Melek Er](https://github.com/emu-hacettepe-analytics/emu430-fall2023-Meleker.git)
 
 # Project Topic
-
+ We will carry out our project by considering 2021 internal migration data across Türkiye. Our main focus is In Migration of internal cities. In this regard, migration trends between different regions such as Eastern Anatolia, Southeastern Anatolia, Aegean, Marmara will be determined and migration relations between big cities and other cities will be analyzed in detail. The relationship between population density and migration will be determined by examining migration rates, especially in cities with large populations. Migration trends will be evaluated according to age groups, gender, educational status and reasons for migration. (retirement, appointment, etc.) Also, the economic development level of the economic region will be interpreted according to the labor force, household disposable income, number of enterprises, number of housing sales, etc. This comprehensive analysis will guide our project in understanding Turkey's migration situation.
 # Data Set
