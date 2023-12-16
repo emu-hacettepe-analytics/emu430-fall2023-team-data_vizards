@@ -4,16 +4,16 @@ title: "Data"
 
 Data source: [TÜİK](https://biruni.tuik.gov.tr/medas/?kn=95&locale=tr)
 
---\> In this code, we create id column for cities in population data set by using region26 data set. Our aim is to have common area (column) for all the data sets (population, region26 and migration) to study on the data sets comfortable.
+--\> In this code, we create "Bölge 2 İd" column for cities in population data set by using region26 data set. Our aim is to have common area (column) for all the data sets (population, region26 and migration) to study on the data sets comfortable.
 
 ```{r}
 library(readxl)
 
-population <-read_excel("~/DataVizards_FinalDataFrame.xlsx")
+population <- read_excel("C:\\Users\\zeyne\\Desktop\\DataVizards_FinalDataFrame.xlsx")
 
-region26 <- read_excel("~/DataVizards_FinalDataFrame.xlsx", sheet = "26 Bölge")
+region26 <- read_excel("C:\\Users\\zeyne\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "26 Bölge")
 
-migration<- read_excel("~/DataVizards_FinalDataFrame.xlsx", sheet = "Göç Bilgileri")
+migration <- read_excel("C:\\Users\\zeyne\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "Göç Bilgileri")
 
 
 population$`Bölge 2 İd`<- ""
