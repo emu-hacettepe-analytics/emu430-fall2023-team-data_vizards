@@ -1,9 +1,3 @@
 ---
 title: "Analysis"
 ---
-
-About this site
-
-```{r}
-migration %>% ggplot(aes(Kadın)) + geom_histogram()
-```
