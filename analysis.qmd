@@ -1,3 +1,29 @@
 ---
 title: "Analysis"
 ---
+```{r}
+library(tidyverse)
+
+# Assuming migrationcause is a vector combining different migration causes
+# and migration is a data frame containing these causes as separate columns
+
+# Create a new data frame by combining migrationcause and corresponding migration data
+df <- data.frame(
+  migrationcause <- rep(c("Education", "Health", "Turnbackfamily", "Betterlifecond", 
+                         "Retirement", "Buyhome", "Familymig", "Finjob", 
+                         "Maritalstatuschange", "Appointment"),each = nrow(migration)),
+  value <- c(migration$education, migration$health, migration$turnbackfamily, 
+            migration$betterlifecond, migration$retirement, migration$buyhome, 
+            migration$familymig, migration$finjob, migration$maritalstatuschange, 
+            migration$appointment)
+)
+
+# Plot the boxplot
+df %>% ggplot(aes(x = migrationcause, y = value, fill = migrationcause)) +
+  geom_boxplot() + 
+  labs(title = "Migration Causes",
+       x = "Migration Causes",
+       y = "Values") +
+  theme(axis.text.x = element_text(angle= 90, hjust = 1)) + xlab("") +
+  scale_y_continuous(trans = "log2") 
+```
