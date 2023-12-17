@@ -4,29 +4,44 @@ title: "Data"
 
 Data source: [TÜİK](https://biruni.tuik.gov.tr/medas/?kn=95&locale=tr)
 
---\> In this code, we created "region2id" column for cities in population data set by using region26 data set. Our aim is to have common area (column) for all the data sets (population, region26 and migration) to study on the data sets comfortable. Additionaly, We renamed the columns to make it easier to work in R by using names() function.
+--\> In this code, we created "region2id" column for cities in population data set by using region26 data set. Our aim is to have common area (column) for all the data sets (population, region26 and migration) to study on the data sets comfortable. Additionaly, We renamed the columns to make it easier to work in R by using names() function. In this code, we created "region2id" column for cities in population data set by using region26 data set. Our aim is to have common area (column) for all the data sets (population, region26 and migration) to study on the data sets comfortable. Additionaly, We renamed the columns to make it easier to work in R by using names() function.
+
+In population dataframe, we used 31 columns. IDD is the code that identifies the district or region. It will be used in migration analysis to track migration patterns between different regions. Region ID and regions reflect the region ID and name. Migration data will be examined on a regional basis to understand population movements between different regions. Totalpop, male, female, corresponds to total population, male population and female population. It will be used in migration analysis to understand how populations change from one region to another.
+
+Age groups (age04, age59, age1014, age1519, age2024, age2529, age3034, age3539, age4044, other age) symbolize the population distribution of different age groups. Migration data will be used to examine migration trends of certain age groups from one region to another. Unknowns indicate unknown or uncertain population information. When analyzing migration, the impact of missing data and how this data may affect migration trends will be important.
+
+Education levels (doctorate, primary edu, primary edu, elementary edu, highschool, literatebutnoschool, notliterate, middleschool, master university) give the population distribution at different education levels. It will be used to analyze the cities receiving immigrants according to their education levels. Fertility rate, the effect of the fertility rate, which is one of the factors affecting the tendency of individuals to migrate from one region to another, will be examined.
+
+Electricity reflects Total Electricity Consumption (Kwh) per capita data. Migration may be towards areas with better infrastructure or living conditions. Migration may occur due to housing sales numbers, changes in the housing market, and trends in housing sales will be important in migration analysis.
+
+In migration data frame, we used 28 columns. Since it contains common columns with the population dataframe, we explain below the columns that are different from the population dataframe.
+
+Turnbackfamily will provide information about the return loss of families, the rate of families migrating, or the return rates of families migrating. Betterlifecond, the search for better living conditions may be one of the reasons why people migrate. Others reflect other reasons for migration. This category includes a variety of reasons that are not specifically defined but may be associated with migration. Retirement refers to relocation after retirement or migration to preferred provinces for retirement.
+
+Buyhome reflects home buying data. An increase in housing sales in a particular region will indicate that migration to that region has increased and people prefer that region. Familymig describes migrations that occur for family reasons. It represents migrations due to family reunification or family relationships.
+
+Finjob indicates migrations for job opportunities or finding a job. People may be more likely to migrate for work or career opportunities. It describes situations such as change of marital status, marriage, and divorce. Health refers to migrations that occur for health reasons. Appointment represents a new business opportunity or change.
 
 ```{r}
 library(readxl)
 library(tidyverse)
 
-<<<<<<< HEAD
-population <- read_excel("C:\\Users\\zeynep\\Desktop\\DataVizards_FinalDataFrame.xlsx")
+population <- read_excel("C:\\Users\\melek\\Desktop\\DataVizards_FinalDataFrame.xlsx")
 names(population) <- c('IDD','city','regionid','regions','totalpop','male','female','age04','age59','age1014','age1519','age2024','age2529','age3034','age3539','age4044','otherage','unknowns','doctorate','primaryedu','elementaryedu','highschool','literatebutnoschool','notliterate','middleschool','master','university','fertilityrate','electricity','numberofattempts','housingsalesnumbers')
 
-region26 <- read_excel("C:\\Users\\zeynep\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "26 Bölge")
+region26 <- read_excel("C:\\Users\\melek\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "26 Bölge")
 names(region26) <- c('region','region2id','workforce15plus','workforce1564','usableincome')
 
-migration <- read_excel("C:\\Users\\zeynep\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "Göç Bilgileri")
-=======
-population <- read_excel("C:\\Users\\zeyne\\Desktop\\DataVizards_FinalDataFrame.xlsx")
+migration <- read_excel("C:\\Users\\melek\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "Göç Bilgileri")
+
+population <- read_excel("C:\\Users\\melek\\Desktop\\DataVizards_FinalDataFrame.xlsx")
 names(population) <- c('IDD','city','regionid','regions','totalpop','male','female','age04','age59','age1014','age1519','age2024','age2529','age3034','age3539','age4044','otherage','unknowns','doctorate','primaryedu','elementaryedu','highschool','literatebutnoschool','notliterate','middleschool','master','university','fertilityrate','electricity','numberofattempts','housingsalesnumbers')
 
-region26 <- read_excel("C:\\Users\\zeyne\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "26 Bölge")
+region26 <- read_excel("C:\\Users\\melek\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "26 Bölge")
 names(region26) <- c('region','region2id','workforce15plus','workforce1564','usableincome')
 
-migration <- read_excel("C:\\Users\\zeyne\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "Göç Bilgileri")
->>>>>>> 3b7cecca9eb3b39585b8f21693879c27aba2d208
+migration <- read_excel("C:\\Users\\melek\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "Göç Bilgileri")
+
 names(migration) <- c('IDD','male2','female2','turnbackfamily','unknowns2','betterlifecond','others','education','retirement','buyhome','familymig','finjob','maritalstatuschange','health','appointment','age04_2','age59_2','age1014_2','age1519_2','age2024_2','age2529_2','age3034_2','age3539_2','age4044_2','university2','highschool2','middleschool2', 'elementaryschool2')
 
 
