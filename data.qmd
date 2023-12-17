@@ -10,6 +10,7 @@ Data source: [TÜİK](https://biruni.tuik.gov.tr/medas/?kn=95&locale=tr)
 library(readxl)
 library(tidyverse)
 
+<<<<<<< HEAD
 population <- read_excel("C:\\Users\\zeynep\\Desktop\\DataVizards_FinalDataFrame.xlsx")
 names(population) <- c('IDD','city','regionid','regions','totalpop','male','female','age04','age59','age1014','age1519','age2024','age2529','age3034','age3539','age4044','otherage','unknowns','doctorate','primaryedu','elementaryedu','highschool','literatebutnoschool','notliterate','middleschool','master','university','fertilityrate','electricity','numberofattempts','housingsalesnumbers')
 
@@ -17,6 +18,15 @@ region26 <- read_excel("C:\\Users\\zeynep\\Desktop\\DataVizards_FinalDataFrame.x
 names(region26) <- c('region','region2id','workforce15plus','workforce1564','usableincome')
 
 migration <- read_excel("C:\\Users\\zeynep\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "Göç Bilgileri")
+=======
+population <- read_excel("C:\\Users\\zeyne\\Desktop\\DataVizards_FinalDataFrame.xlsx")
+names(population) <- c('IDD','city','regionid','regions','totalpop','male','female','age04','age59','age1014','age1519','age2024','age2529','age3034','age3539','age4044','otherage','unknowns','doctorate','primaryedu','elementaryedu','highschool','literatebutnoschool','notliterate','middleschool','master','university','fertilityrate','electricity','numberofattempts','housingsalesnumbers')
+
+region26 <- read_excel("C:\\Users\\zeyne\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "26 Bölge")
+names(region26) <- c('region','region2id','workforce15plus','workforce1564','usableincome')
+
+migration <- read_excel("C:\\Users\\zeyne\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "Göç Bilgileri")
+>>>>>>> 3b7cecca9eb3b39585b8f21693879c27aba2d208
 names(migration) <- c('IDD','male2','female2','turnbackfamily','unknowns2','betterlifecond','others','education','retirement','buyhome','familymig','finjob','maritalstatuschange','health','appointment','age04_2','age59_2','age1014_2','age1519_2','age2024_2','age2529_2','age3034_2','age3539_2','age4044_2','university2','highschool2','middleschool2', 'elementaryschool2')
 
 
