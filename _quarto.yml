@@ -31,7 +31,7 @@ format:
     toc: true
     toc-location: left
     theme: 
-      light: simplex 
+      light: sandstone 
       dark: cyborg
     css: styles.css
 
