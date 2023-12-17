@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data_Vizards’s Project Lab - Data</title>
+<title>DataVizards’s Project Lab - Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Data_Vizards’s Project Lab</span>
+    <span class="navbar-title">DataVizards’s Project Lab</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -169,28 +169,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p>Data source: <a href="https://biruni.tuik.gov.tr/medas/?kn=95&amp;locale=tr">TÜİK</a></p>
-<p>–&gt; In this code, we create “Bölge 2 İd” column for cities in population data set by using region26 data set. Our aim is to have common area (column) for all the data sets (population, region26 and migration) to study on the data sets comfortable.</p>
+<p>–&gt; In this code, we created “region2id” column for cities in population data set by using region26 data set. Our aim is to have common area (column) for all the data sets (population, region26 and migration) to study on the data sets comfortable. Additionaly, We renamed the columns to make it easier to work in R by using names() function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">zeyne</span><span class="sc">\\</span><span class="st">Desktop</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>region26 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">zeyne</span><span class="sc">\\</span><span class="st">Desktop</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"26 Bölge"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>migration <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">zeyne</span><span class="sc">\\</span><span class="st">Desktop</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Göç Bilgileri"</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>population<span class="sc">$</span><span class="st">`</span><span class="at">Bölge 2 İd</span><span class="st">`</span><span class="ot">&lt;-</span> <span class="st">""</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(population)) {</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  city <span class="ot">&lt;-</span> population<span class="sc">$</span>City[i]</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(region26<span class="sc">$</span>Bölge)) {</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">grepl</span>(city, region26<span class="sc">$</span>Bölge[j])) {</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>      population<span class="sc">$</span><span class="st">`</span><span class="at">Bölge 2 İd</span><span class="st">`</span>[i] <span class="ot">&lt;-</span> <span class="fu">paste</span>(region26<span class="sc">$</span><span class="st">`</span><span class="at">Bölge 2 İd</span><span class="st">`</span>[j])</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span> </span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.3     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">zeyne</span><span class="sc">\\</span><span class="st">Desktop</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(population) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'IDD'</span>,<span class="st">'city'</span>,<span class="st">'regionid'</span>,<span class="st">'regions'</span>,<span class="st">'totalpop'</span>,<span class="st">'male'</span>,<span class="st">'female'</span>,<span class="st">'age04'</span>,<span class="st">'age59'</span>,<span class="st">'age1014'</span>,<span class="st">'age1519'</span>,<span class="st">'age2024'</span>,<span class="st">'age2529'</span>,<span class="st">'age3034'</span>,<span class="st">'age3539'</span>,<span class="st">'age4044'</span>,<span class="st">'otherage'</span>,<span class="st">'unknowns'</span>,<span class="st">'doctorate'</span>,<span class="st">'primaryedu'</span>,<span class="st">'elementaryedu'</span>,<span class="st">'highschool'</span>,<span class="st">'literatebutnoschool'</span>,<span class="st">'notliterate'</span>,<span class="st">'middleschool'</span>,<span class="st">'master'</span>,<span class="st">'university'</span>,<span class="st">'fertilityrate'</span>,<span class="st">'electricity'</span>,<span class="st">'numberofattempts'</span>,<span class="st">'housingsalesnumbers'</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>region26 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">zeyne</span><span class="sc">\\</span><span class="st">Desktop</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"26 Bölge"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(region26) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'region'</span>,<span class="st">'region2id'</span>,<span class="st">'workforce15plus'</span>,<span class="st">'workforce1564'</span>,<span class="st">'usableincome'</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>migration <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">zeyne</span><span class="sc">\\</span><span class="st">Desktop</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Göç Bilgileri"</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(migration) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'IDD'</span>,<span class="st">'male2'</span>,<span class="st">'female2'</span>,<span class="st">'turnbackfamily'</span>,<span class="st">'unknowns2'</span>,<span class="st">'betterlifecond'</span>,<span class="st">'others'</span>,<span class="st">'education'</span>,<span class="st">'retirement'</span>,<span class="st">'buyhome'</span>,<span class="st">'familymig'</span>,<span class="st">'finjob'</span>,<span class="st">'maritalstatuschange'</span>,<span class="st">'health'</span>,<span class="st">'appointment'</span>,<span class="st">'age04_2'</span>,<span class="st">'age59_2'</span>,<span class="st">'age1014_2'</span>,<span class="st">'age1519_2'</span>,<span class="st">'age2024_2'</span>,<span class="st">'age2529_2'</span>,<span class="st">'age3034_2'</span>,<span class="st">'age3539_2'</span>,<span class="st">'age4044_2'</span>,<span class="st">'university2'</span>,<span class="st">'highschool2'</span>,<span class="st">'middleschool2'</span>, <span class="st">'elementaryschool2'</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>population<span class="sc">$</span><span class="st">`</span><span class="at">region2id</span><span class="st">`</span><span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(population)) {</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  city <span class="ot">&lt;-</span> population<span class="sc">$</span>city[i]</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(region26<span class="sc">$</span>region)) {</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">grepl</span>(city, region26<span class="sc">$</span>region[j])) {</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>      population<span class="sc">$</span><span class="st">`</span><span class="at">region2id</span><span class="st">`</span>[i] <span class="ot">&lt;-</span> <span class="fu">paste</span>(region26<span class="sc">$</span><span class="st">`</span><span class="at">region2id</span><span class="st">`</span>[j])</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span> </span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
