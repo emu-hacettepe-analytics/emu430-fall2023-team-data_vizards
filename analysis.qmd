@@ -4,54 +4,63 @@ title: "Analysis"
 
 ```{r}
 #| warning: false
-
-
 library(tidyverse)
 library(readxl)
+library(readr)
 
-population <- read_excel("C:\\Users\\beyza\\Desktop\\DataVizards_FinalDataFrame.xlsx")
-names(population) <- c('IDD','city','regionid','regions','totalpop','male','female',
-                       'age04','age59','age1014','age1519','age2024','age2529','age3034','age3539','age4044','otherage','unknowns',
-                       'doctorate','primaryedu','elementaryedu','highschool','literatebutnoschool','notliterate','middleschool',
-                       'master','university',
-                       'fertilityrate','electricity','numberofattempts','housingsalesnumbers')
+population <- read_excel("C:\\Users\\zeyne\\Desktop\\DataVizards_FinalDataFrame.xlsx")
+names(population) <- c('IDD','city','regionid','regions','totalpop','male','female','age04','age59','age1014','age1519','age2024','age2529','age3034','age3539','age4044','otherage','unknowns','doctorate','primaryedu','elementaryedu','highschool','literatebutnoschool','notliterate','middleschool','master','university','fertilityrate','electricity','numberofattempts','housingsalesnumbers')
 
-region26 <- read_excel("C:\\Users\\beyza\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "26 Bolge")
+region26 <- read_excel("C:\\Users\\zeyne\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "26 Bölge")
 names(region26) <- c('region','region2id','workforce15plus','workforce1564','usableincome')
 
-migration <- read_excel("C:\\Users\\beyza\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "Goc Bilgileri")
-names(migration) <- c('IDD','male2','female2','turnbackfamily','unknowns2','betterlifecond','others',
-                      'education','retirement','buyhome','familymig','finjob','maritalstatuschange','health','appointment',
-                      'age04_2','age59_2','age1014_2','age1519_2','age2024_2','age2529_2','age3034_2','age3539_2','age4044_2',
-                      'university2','highschool2','middleschool2', 'elementaryschool2')
+migration <- read_excel("C:\\Users\\zeyne\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "Göç Bilgileri")
+names(migration) <- c('IDD','male2','female2','turnbackfamily','unknowns2','betterlifecond','others','education','retirement','buyhome','familymig','finjob','maritalstatuschange','health','appointment','age04_2','age59_2','age1014_2','age1519_2','age2024_2','age2529_2','age3034_2','age3539_2','age4044_2','university2','highschool2','middleschool2', 'elementaryschool2')
 
 
-df <- data.frame(
-  migrationcause <- rep(c("Education", "Health", "Turnbackfamily", "Betterlifecond", 
-                         "Retirement", "Buyhome", "Familymig", "Finjob", 
-                         "Maritalstatuschange", "Appointment"),each = nrow(migration)),
-  value <- c(migration$education, migration$health, migration$turnbackfamily, 
-            migration$betterlifecond, migration$retirement, migration$buyhome, 
-            migration$familymig, migration$finjob, migration$maritalstatuschange, 
-            migration$appointment)
-)
-
-# Plot the boxplot
-df %>% 
-mutate(migrationcause = reorder(migrationcause, 
-value, FUN = median)) %>%ggplot(aes(x = migrationcause, y = value, fill = migrationcause)) + geom_boxplot() + 
-  labs(title = "Migration Causes",
-       x = "Migration Causes",
-       y = "Values") +
-  theme(axis.text.x = element_text(angle= 90, hjust = 1)) + xlab("") +
-  scale_y_continuous(trans = "log2") 
+# tidy migration dataset
+tidy_data_gender <- migration |> pivot_longer(c(male2,female2),names_to = "gender2",values_to = "gender_value2")
 
 
+tidy_data_causes <- tidy_data_gender |> pivot_longer(c(turnbackfamily,unknowns2,betterlifecond,others,education,
+                                                retirement,buyhome,familymig,finjob,maritalstatuschange,health,appointment),names_to = "migrationcauses",values_to = "migrationcauses_value")
 
+tidy_data_age <- tidy_data_causes |> pivot_longer(c(age04_2,age59_2,age1014_2,age1519_2,
+                                                    age2024_2,age2529_2,age3034_2,age3539_2,age4044_2),names_to = "agerange2",values_to = "agerange_value2")
+
+last_migration_tidy_data <- tidy_data_age |> pivot_longer(c(university2,highschool2,middleschool2,elementaryschool2),names_to = "education2",values_to = "education_value2")
+
+
+# tidy region26 dataset
+tidy_region26 <- region26 |> pivot_longer(c(workforce15plus,workforce1564),names_to = "workforce",values_to = "workforce_values")
+
+
+# tidy population dataset
+tidy_data_gender2 <- population |> pivot_longer(c(male,female),names_to = "gender",values_to = "gender_value") 
+
+tidy_data_age <- tidy_data_gender2 |> pivot_longer(c(age04,age59,age1014,age1519,
+                                                    age2024,age2529,age3034,age3539,age4044,otherage),names_to = "agerange",values_to = "agerange_value")
+
+tidy_literate <- tidy_data_age |> pivot_longer(c(unknowns,literatebutnoschool,notliterate),names_to = "literate",values_to = "literate_values")
+
+last_tidy_data_education2 <- tidy_literate|> pivot_longer(c(university,highschool,middleschool,elementaryedu,doctorate,primaryedu,master),names_to = "education",values_to = "education_value")
+
+Last_population_tidy_data <- last_tidy_data_education2 |> pivot_longer(c(fertilityrate,electricity,numberofattempts,housingsalesnumbers),names_to = "othervariables",values_to = "othervariables_value")
 ```
 
-To have an overview of data on migratition causes we plotted a box plot to see what reasons cause migration the most. Box plot shows that education is the most common reason for migration followed by migration due to a family member and better life conditions.
+```{r}
+#| warning: false
+library(tidyverse)
+library(readxl)
+library(readr)
+# Migration Causes Box Plot
+last_migration_tidy_data |> mutate(migrationcauses = reorder(migrationcauses, migrationcauses_value, FUN = median)) |>
+  ggplot(aes(migrationcauses,migrationcauses_value,fill = migrationcauses)) +
+  geom_boxplot() + ggtitle("Migration Causes") + xlab("Migration Causes") +
+  ylab("Values") + theme(axis.text.x = element_text(angle= 90, hjust = 1)) + xlab("") +
+  scale_y_continuous(trans = "log2") 
+```
 
-When plotting the box plot we scaled y values to log2 scale to see the distribution better and we ordered the box plots to make it easier to understand which are the most and the least causes of migration. We also used the rep function with the help of an AI tool[^1]. migrationcause \<- rep(...): This part creates a vector named migrationcause by repeating the specified migration causes for each row in the migration data frame. The rep function is used for repetition.
+To have an overview of data on migration causes we plotted a box plot to see what reasons cause migration the most. Box plot shows that education is the most common reason for migration followed by migration due to a family member and better life conditions.
 
-[^1]: We used the *rep()* and *each* functions with the help of ChatGPT.
+When plotting the box plot we scaled y values to log2 scale to see the distribution better and we ordered the box plots to make it easier to understand which are the most and the least causes of migration.
