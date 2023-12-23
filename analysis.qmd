@@ -45,7 +45,7 @@ tidy_literate <- tidy_data_age |> pivot_longer(c(unknowns,literatebutnoschool,no
 
 last_tidy_data_education2 <- tidy_literate|> pivot_longer(c(university,highschool,middleschool,elementaryedu,doctorate,primaryedu,master),names_to = "education",values_to = "education_value")
 
-Last_population_tidy_data <- last_tidy_data_education2 |> pivot_longer(c(fertilityrate,electricity,numberofattempts,housingsalesnumbers),names_to = "othervariables",values_to = "othervariables_value")
+last_population_tidy_data <- last_tidy_data_education2 |> pivot_longer(c(fertilityrate,electricity,numberofattempts,housingsalesnumbers),names_to = "othervariables",values_to = "othervariables_value")
 ```
 
 ```{r}
