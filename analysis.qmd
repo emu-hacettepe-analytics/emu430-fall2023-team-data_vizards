@@ -55,6 +55,8 @@ last_tidy_data_education2 <- tidy_literate|> pivot_longer(c(university,highschoo
 last_population_tidy_data <- last_tidy_data_education2 |> pivot_longer(c(fertilityrate,electricity,numberofattempts,housingsalesnumbers),names_to = "othervariables",values_to = "othervariables_value")
 ```
 
+Now that all data preparations are complete, we can begin the process of visualization :)
+
 ```{r}
 #| warning: false
 library(tidyverse)
