@@ -9,6 +9,8 @@ title: "Analysis"
 library(tidyverse)
 library(readxl)
 library(readr)
+library(gridExtra)
+library(dplyr)
 
 population <- read_excel("C:\\Users\\zeyne\\Desktop\\DataVizards_FinalDataFrame.xlsx")
 names(population) <- c('IDD','city','regionid','regions','totalpop','male','female','age04','age59','age1014','age1519','age2024','age2529','age3034','age3539','age4044','otherage','unknowns','doctorate','primaryedu','elementaryedu','highschool','literatebutnoschool','notliterate','middleschool','master','university','fertilityrate','electricity','numberofattempts','housingsalesnumbers')
@@ -21,7 +23,8 @@ names(migration) <- c('IDD','male2','female2','turnbackfamily','unknowns2','bett
 
 
 # tidy migration dataset
-migration$city <- population$city
+migration$city <- population$city 
+migration$regions <- population$regions
 
 tidy_data_gender <- migration |> pivot_longer(c(male2,female2),names_to = "gender2",values_to = "gender_value2")
 
@@ -69,3 +72,21 @@ last_migration_tidy_data |> mutate(migrationcauses = reorder(migrationcauses, mi
 To have an overview of data on migration causes we plotted a box plot to see what reasons cause migration the most. Box plot shows that education is the most common reason for migration followed by migration due to a family member and better life conditions.
 
 When plotting the box plot we scaled y values to log2 scale to see the distribution better and we ordered the box plots to make it easier to understand which are the most and the least causes of migration.
+
+```{r}
+region_plot <- last_migration_tidy_data |> select(migrationcauses,migrationcauses_value,regions) |>
+  ggplot(aes(migrationcauses,migrationcauses_value)) + geom_point(aes(color = regions)) +
+  ggtitle("Regions and Reasons for Migration") + xlab("Migration Causes") +
+  ylab("Migration Values") + theme(axis.text.x = element_text(angle= 90, hjust = 1)) + xlab("") + scale_y_continuous(trans = "log2")  
+print(region_plot)
+```
+When we analyze migration reasons on a regional basis, we observe that under the category of 'different reasons,' the highest migration has occurred to the Marmara region. Following the Marmara region, the second-highest migration took place to the Central Anatolia region. This drew our attention to a few points. We had expected that the highest migration due to retirement would be to the Mediterranean or Aegean regions, but it turned out that the majority of migration happened to the Marmara region.
+
+```{r}
+city_plot <- last_migration_tidy_data |> filter(city %in% c("Ankara","İstanbul","İzmir","Antalya","Trabzon","Ağrı","Şanlıurfa")) |> select(migrationcauses,migrationcauses_value,city) |>
+  ggplot(aes(migrationcauses,migrationcauses_value)) + geom_point(aes(color = city)) +
+  ggtitle("Metropolitan Cities and Reasons for Migration") + xlab("Migration Causes") +
+  ylab("Migration Values") + theme(axis.text.x = element_text(angle= 90, hjust = 1)) + xlab("") + scale_y_continuous(trans = "log2")  
+print(city_plot)
+```
+While creating this graph, we included the most populous cities of each region because plotting for all 81 provinces would be quite challenging. As seen in this graph, the highest migration, due to different reasons, has been to Istanbul, followed by Ankara. What surprised us again is that the highest migration due to retirement is to İstanbul and Ankara."
