@@ -21,6 +21,8 @@ names(migration) <- c('IDD','male2','female2','turnbackfamily','unknowns2','bett
 
 
 # tidy migration dataset
+migration$city <- population$city
+
 tidy_data_gender <- migration |> pivot_longer(c(male2,female2),names_to = "gender2",values_to = "gender_value2")
 
 
