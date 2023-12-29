@@ -12,13 +12,13 @@ library(readr)
 library(gridExtra)
 library(dplyr)
 
-population <- read_excel("C:\\Users\\zeyne\\Desktop\\DataVizards_FinalDataFrame.xlsx")
+population <- read_excel("C:\\Users\\melek\\Desktop\\DataVizards_FinalDataFrame.xlsx")
 names(population) <- c('IDD','city','regionid','regions','totalpop','male','female','age04','age59','age1014','age1519','age2024','age2529','age3034','age3539','age4044','otherage','unknowns','doctorate','primaryedu','elementaryedu','highschool','literatebutnoschool','notliterate','middleschool','master','university','fertilityrate','electricity','numberofattempts','housingsalesnumbers')
 
-region26 <- read_excel("C:\\Users\\zeyne\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "Bolge26")
+region26 <- read_excel("C:\\Users\\melek\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "Bolge26")
 names(region26) <- c('region','region2id','workforce15plus','workforce1564','usableincome')
 
-migration <- read_excel("C:\\Users\\zeyne\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "Goc Bilgileri")
+migration <- read_excel("C:\\Users\\melek\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "Goc Bilgileri")
 names(migration) <- c('IDD','male2','female2','turnbackfamily','unknowns2','betterlifecond','others','education','retirement','buyhome','familymig','finjob','maritalstatuschange','health','appointment','age04_2','age59_2','age1014_2','age1519_2','age2024_2','age2529_2','age3034_2','age3539_2','age4044_2','university2','highschool2','middleschool2', 'elementaryschool2')
 
 
@@ -70,6 +70,9 @@ last_migration_tidy_data |> mutate(migrationcauses = reorder(migrationcauses, mi
   ylab("Values") + theme(axis.text.x = element_text(angle= 90, hjust = 1)) + xlab("") +
   scale_y_continuous(trans = "log2") 
 ```
+```{r}
+
+```
 
 To have an overview of data on migration causes we plotted a box plot to see what reasons cause migration the most. Box plot shows that education is the most common reason for migration followed by migration due to a family member and better life conditions.
 
@@ -92,3 +95,13 @@ city_plot <- last_migration_tidy_data |> filter(city %in% c("Ankara","İstanbul"
 print(city_plot)
 ```
 While creating this graph, we included the most populous cities of each region because plotting for all 81 provinces would be quite challenging. As seen in this graph, the highest migration, due to different reasons, has been to Istanbul, followed by Ankara. What surprised us again is that the highest migration due to retirement is to İstanbul and Ankara."
+
+```{r}
+last_migration_tidy_data |> mutate(agerange2 = reorder(agerange2, agerange_value2, FUN = median)) |>
+  ggplot(aes(agerange2,agerange_value2,fill = agerange2)) +
+  geom_boxplot() + ggtitle("Immigration Data of Age Ranges") + xlab("Age Ranges") +
+  ylab("Values") + theme(axis.text.x = element_text(angle= 90, hjust = 1)) + xlab("") +
+  scale_y_continuous(trans = "log2") 
+```
+When we look at the Immigration Data of Age Ranges, we see that the most immigration age range is 20-24. We can say that education was the highest value among the reasons for immigration and this is consistent with this. Likewise, the second place is 15-19. It can be interpreted that high school students also migrate for education. "finjob" ranks in the middle list of reasons for migration. If we consider 25-29 as the age for finding a job, we can comment that people aged 25-29 do not migrate only for the purpose of finding a job. For example, they may have migrated due to better living conditions. When we look at the graph, we see that the migration age of 40-44 migrates the least compared to other ages. In my opinion, I can conclude from the graph that people who are used to a certain order no longer want change. According to the chart, 10-14 years old is the second to last migration age range. "familymig" ranked second among the reasons for migration. I can say that there is a contradiction here.
+
