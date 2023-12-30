@@ -12,13 +12,13 @@ library(readr)
 library(gridExtra)
 library(dplyr)
 
-population <- read_excel("C:\\Users\\melek\\Desktop\\DataVizards_FinalDataFrame.xlsx")
+population <- read_excel("C:\\Users\\ekene\\Downloads\\DataVizards_FinalDataFrame.xlsx")
 names(population) <- c('IDD','city','regionid','regions','totalpop','male','female','age04','age59','age1014','age1519','age2024','age2529','age3034','age3539','age4044','otherage','unknowns','doctorate','primaryedu','elementaryedu','highschool','literatebutnoschool','notliterate','middleschool','master','university','fertilityrate','electricity','numberofattempts','housingsalesnumbers')
 
-region26 <- read_excel("C:\\Users\\melek\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "Bolge26")
+region26 <- read_excel("C:\\Users\\ekene\\Downloads\\DataVizards_FinalDataFrame.xlsx", sheet = "Bolge26")
 names(region26) <- c('region','region2id','workforce15plus','workforce1564','usableincome')
 
-migration <- read_excel("C:\\Users\\melek\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "Goc Bilgileri")
+migration <- read_excel("C:\\Users\\ekene\\Downloads\\DataVizards_FinalDataFrame.xlsx", sheet = "Goc Bilgileri")
 names(migration) <- c('IDD','male2','female2','turnbackfamily','unknowns2','betterlifecond','others','education','retirement','buyhome','familymig','finjob','maritalstatuschange','health','appointment','age04_2','age59_2','age1014_2','age1519_2','age2024_2','age2529_2','age3034_2','age3539_2','age4044_2','university2','highschool2','middleschool2', 'elementaryschool2')
 
 
@@ -53,6 +53,18 @@ tidy_literate <- tidy_data_age |> pivot_longer(c(unknowns,literatebutnoschool,no
 last_tidy_data_education2 <- tidy_literate|> pivot_longer(c(university,highschool,middleschool,elementaryedu,doctorate,primaryedu,master),names_to = "education",values_to = "education_value")
 
 last_population_tidy_data <- last_tidy_data_education2 |> pivot_longer(c(fertilityrate,electricity,numberofattempts,housingsalesnumbers),names_to = "othervariables",values_to = "othervariables_value")
+population$`region2id`<- ""
+for (i in 1:nrow(population)) {
+  city <- population$city[i]
+  
+  for (j in 1:length(region26$region)) {
+    if (grepl(city, region26$region[j])) {
+      population$`region2id`[i] <- paste(region26$`region2id`[j])
+      break 
+    }
+  }
+}
+
 ```
 
 Now that all data preparations are complete, we can begin the process of visualization :)
