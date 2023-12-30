@@ -139,6 +139,7 @@ ggplot(education_fertility, aes(x = avg_education, y = avg_fertility, label = re
 
 ```{r}
 library(tidyverse)
+
 merged_data <- population %>%
   inner_join(migration, by = "city") %>%
   select(city, region2id, university2, highschool2, middleschool2, elementaryschool2)
@@ -148,7 +149,16 @@ merged_data_tidy <- merged_data %>%
                names_to = "education_level", values_to = "migration_count") %>%
   group_by(region2id, education_level) %>%
   summarise(total_migration = sum(migration_count, na.rm = TRUE)) %>%
-  ungroup()
+  ungroup() %>%
+  mutate(
+    education_level = case_when(
+      education_level == "university2" ~ "University",
+      education_level == "middleschool2" ~ "Middle School",
+      education_level == "highschool2" ~ "High School",
+      education_level == "elementaryschool2" ~ "Elementary School",
+      TRUE ~ as.character(education_level)
+    )
+  )  # Mutate i??lemi burada kapanmal??
 
 sorted_regions <- merged_data_tidy %>%
   group_by(region2id) %>%
@@ -167,6 +177,7 @@ ggplot(merged_data_tidy, aes(x = region2id, y = total_migration, fill = educatio
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   scale_fill_brewer(palette = "Set3") +
   scale_y_continuous(labels = scales::comma)
+
 
 ```
 
