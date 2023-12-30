@@ -153,7 +153,7 @@ merged_data_tidy <- merged_data %>%
 sorted_regions <- merged_data_tidy %>%
   group_by(region2id) %>%
   summarise(total_migration = sum(total_migration, na.rm = TRUE)) %>%
-  arrange(desc(total_migration)) %>%
+  arrange(desc(total_migration)) %>% 
   pull(region2id)
 
 merged_data_tidy$region2id <- factor(merged_data_tidy$region2id, levels = sorted_regions)
@@ -173,13 +173,7 @@ ggplot(merged_data_tidy, aes(x = region2id, y = total_migration, fill = educatio
 It is seen that immigrants with high education levels mostly migrate to regions numbered TR10, TR51 and TR42. These regions cover the northwestern, western and southwestern regions of Turkey. It may indicate that these regions are more attractive in terms of education and job opportunities.
 It is seen that immigrants with low education level mostly migrate to TR81, TR82 and TRA2 regions. These regions cover the northeastern, eastern and southeastern regions of Turkey. It may indicate that these regions are poorer in terms of education and job opportunities.
 It may indicate that other Regions are average in terms of education and job opportunities.
-Region 1: TR10 (Istanbul)
-Region 2: TR21 (Tekirda??, Edirne, K??rklareli), TR22 (Bal??kesir, ??anakkale)
-Region 3: TR31 (Izmir), TR32 (Ayd??n, Denizli, Mu??la), TR33 (Manisa, Afyon, K??tahya, U??ak)
-Region 4: TR41 (Bursa, Eski??ehir, Bilecik), TR42 (Kocaeli, Sakarya, D??zce, Bolu, Yalova), TR51 (Ankara), TR52 (Konya, Karaman)
-Region 5: TR61 (Antalya, Isparta, Burdur), TR62 (Adana, Mersin), TR63 (Hatay, Kahramanmara??, Osmaniye)
-Region 6: TR71 (K??r??kkale, Aksaray, Ni??de, Nev??ehir, K??r??ehir), TR72 (Kayseri, Sivas, Yozgat), TR81 (Zonguldak, Karab??k, Bart??n), TR82 (Kastamonu, ??ank??r??, Sinop), TR83 (Samsun, Tokat, ??orum , Amasya), TR90 (Trabzon, Ordu, Giresun, Rize, Artvin, G??m????hane)
-Region 7: TRA1 (Erzurum, Erzincan, Bayburt), TRA2 (A??r??, Kars, I??d??r, Ardahan), TRB1 (Malatya, Elaz????, Bing??l, Tunceli), TRB2 (Van, Mu??, Bitlis, Hakkari), TRC1 (Gaziantep, Ad??yaman , Kilis), TRC2 (??anl??urfa, Diyarbak??r), TRC3 (Mardin, Batman, ????rnak, Siirt)
+
 
 ```{r}
 library(tidyverse)
