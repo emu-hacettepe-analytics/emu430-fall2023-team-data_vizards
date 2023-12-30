@@ -158,7 +158,7 @@ ggplot(merged_data_tidy, aes(x = region2id, y = total_migration, fill = educatio
 
 ```
 
-  It is seen that immigrants with high education levels mostly migrate to regions numbered TR10, TR51 and TR42. These regions cover the northwestern, western and southwestern regions of Turkey. It may indicate that these regions are more attractive in terms of education and job opportunities.
+It is seen that immigrants with high education levels mostly migrate to regions numbered TR10, TR51 and TR42. These regions cover the northwestern, western and southwestern regions of Turkey. It may indicate that these regions are more attractive in terms of education and job opportunities.
 It is seen that immigrants with low education level mostly migrate to TR81, TR82 and TRA2 regions. These regions cover the northeastern, eastern and southeastern regions of Turkey. It may indicate that these regions are poorer in terms of education and job opportunities.
 It may indicate that other Regions are average in terms of education and job opportunities.
 Region 1: TR10 (Istanbul)
@@ -169,3 +169,31 @@ Region 5: TR61 (Antalya, Isparta, Burdur), TR62 (Adana, Mersin), TR63 (Hatay, Ka
 Region 6: TR71 (K??r??kkale, Aksaray, Ni??de, Nev??ehir, K??r??ehir), TR72 (Kayseri, Sivas, Yozgat), TR81 (Zonguldak, Karab??k, Bart??n), TR82 (Kastamonu, ??ank??r??, Sinop), TR83 (Samsun, Tokat, ??orum , Amasya), TR90 (Trabzon, Ordu, Giresun, Rize, Artvin, G??m????hane)
 Region 7: TRA1 (Erzurum, Erzincan, Bayburt), TRA2 (A??r??, Kars, I??d??r, Ardahan), TRB1 (Malatya, Elaz????, Bing??l, Tunceli), TRB2 (Van, Mu??, Bitlis, Hakkari), TRC1 (Gaziantep, Ad??yaman , Kilis), TRC2 (??anl??urfa, Diyarbak??r), TRC3 (Mardin, Batman, ????rnak, Siirt)
 
+```{r}
+library(tidyverse)
+merged_data <- inner_join(population, migration, by = "city") %>%
+  select(city, region2id, university2, doctorate, highschool2, elementaryschool2, finjob)
+education_migration <- merged_data %>%
+  pivot_longer(cols = c(university2, doctorate, highschool2, elementaryschool2),
+               names_to = "education_level", values_to = "migration_count") %>%
+  mutate(
+    education_level = case_when(
+      education_level == "university2" ~ "University",
+      education_level == "doctorate" ~ "Doctorate",
+      education_level == "highschool2" ~ "High School",
+      education_level == "elementaryschool2" ~ "Elementary School",
+      TRUE ~ as.character(education_level)
+    )
+  )
+
+ggplot(education_migration, aes(x = education_level, y = migration_count, fill = education_level)) +
+  geom_boxplot() +
+  labs(title = "Migration by Education Level",
+       x = "Education Level",
+       y = "Migration Count",
+       fill = "Education Level") +
+  theme_minimal() + scale_y_continuous(labels = scales::comma)
+```
+  On the x axis, there are four education levels: doctorate, primary school, high school and university. On the Y axis, the number of people migrating is shown with values ranging from 0 to 100,000. In the graph, the number of migrations of individuals at doctoral or primary school level is much less than that of individuals at high school and university levels.
+  In the graph, the highest number of migrations is seen among individuals at university level. This is followed by individuals at the high school level. It is seen that individuals with a higher level of education migrate less than individuals with a lower level of education. This may indicate that individuals with higher levels of education are more dependent on working conditions or find fewer job opportunities.
+  It is seen that individuals with low education levels migrate more than individuals with high education levels. This may indicate that individuals with lower levels of education strive more to improve their living conditions or are under more pressure.
