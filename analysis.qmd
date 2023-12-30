@@ -357,13 +357,11 @@ ggplot(rates_data_tidy, aes(x = region2id, y = rate_value, fill = rate_type)) +
   scale_y_continuous(labels = scales::comma)
 ```
 
-
 The high education level of the Marmara Region may cause electricity consumption to be high in this region. However, other regions appear to have lower-than-expected electricity consumption. While high usage is expected due to illegal electricity use, especially in Eastern Anatolia, the data do not support this prediction.
 
 Since the Aegean Region is a summer resort, it was expected that house sales would be high. The fact that Southeastern Anatolia has the lowest housing sales rates is an expected result due to the development level of the region.
 
-Number of Initiatives and Touristic Regions: The fact that the Black Sea is a region with an unexpectedly high number of initiatives may be due to the fact that it is a touristic region. This supports our prediction, as the Aegean Region ranks second as a touristic region. It is relatively expected that Southeastern Anatolia has the lowest number of startups.
-The fact that the Black Sea is a region with an unexpectedly high number of initiatives may be due to the fact that it is a touristic region. This supports our prediction, as the Aegean Region ranks second as a touristic region. It is relatively expected that Southeastern Anatolia has the lowest number of startups.
+Number of Initiatives and Touristic Regions: The fact that the Black Sea is a region with an unexpectedly high number of initiatives may be due to the fact that it is a touristic region. This supports our prediction, as the Aegean Region ranks second as a touristic region. It is relatively expected that Southeastern Anatolia has the lowest number of startups. The fact that the Black Sea is a region with an unexpectedly high number of initiatives may be due to the fact that it is a touristic region. This supports our prediction, as the Aegean Region ranks second as a touristic region. It is relatively expected that Southeastern Anatolia has the lowest number of startups.
 
 When looking at correlation analyses, although the correlation between electricity consumption and migration rates has the highest value, this relationship cannot be said to be linear. The observed high value of the correlation between education level and electricity consumption (close to 1) supports that high education level may be related to electricity consumption. We obtained results that support our opinion stated in first sentence.
 
