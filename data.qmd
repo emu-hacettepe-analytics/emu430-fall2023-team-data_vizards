@@ -6,7 +6,7 @@ Data source: [TÜİK](https://biruni.tuik.gov.tr/medas/?kn=95&locale=tr)
 
 We transferred the data we received from **TÜİK** as an Excel file onto R with the **`read_excel( )`** function in the **`readxl`** library.
 
-In this code, we created "region2id" column for cities in population data set by using region26 data set. Our aim is to have common area (column) for all the data sets (population, region26 and migration) to study on the data sets comfortable. Additionaly, we renamed the columns to make it easier to work in R by using names() function. In this code, we created "region2id" column for cities in population data set by using region26 data set. Our aim is to have common area (column) for all the data sets (population, region26 and migration) to study on the data sets comfortable. Additionaly, We renamed the columns to make it easier to work in R by using names() function and we tidy up our data sets with the help of the **pivot_longer()** function to work with these datasets more flexibly and facilitate visualization. The tidy data sets names are **last_migration_tidy_data, tidy_region26 and last_population_tidy_data** respectively. Appart from this operation,using the population data set, we added the **city column** and **region column** to both the migration data set in tidy form and the migration data set in wide form to do better visualization. 
+In this code, we created "region2id" column for cities in population data set by using region26 data set. Our aim is to have common area (column) for all the data sets (population, region26 and migration) to study on the data sets comfortable. Additionaly, we renamed the columns to make it easier to work in R by using names() function. In this code, we created "region2id" column for cities in population data set by using region26 data set. Our aim is to have common area (column) for all the data sets (population, region26 and migration) to study on the data sets comfortable. Additionaly, We renamed the columns to make it easier to work in R by using names() function and we tidy up our data sets with the help of the **pivot_longer()** function to work with these datasets more flexibly and facilitate visualization. The tidy data sets names are **last_migration_tidy_data, tidy_region26 and last_population_tidy_data** respectively. Appart from this operation,using the population data set, we added the **city column** and **region column** to both the migration data set in tidy form and the migration data set in wide form to do better visualization.
 
 In population data frame, we used 31 columns. **IDD** is the code that identifies the district or region. It will be used in migration analysis to track migration patterns between different regions. **Region ID** and **regions** reflect the region ID and name. Migration data will be examined on a regional basis to understand population movements between different regions. **Totalpop**, **male**, **female**, corresponds to total population, male population and female population. It will be used in migration analysis to understand how populations change from one region to another.
 
@@ -34,13 +34,13 @@ library(tidyverse)
 library(readxl)
 library(readr)
 
-population <- read_excel("C:\\Users\\beyza\\Desktop\\DataVizards_FinalDataFrame.xlsx")
+population <- read_excel("C:\\Users\\zeyne\\Desktop\\DataVizards_FinalDataFrame.xlsx")
 names(population) <- c('IDD','city','regionid','regions','totalpop','male','female','age04','age59','age1014','age1519','age2024','age2529','age3034','age3539','age4044','otherage','unknowns','doctorate','primaryedu','elementaryedu','highschool','literatebutnoschool','notliterate','middleschool','master','university','fertilityrate','electricity','numberofattempts','housingsalesnumbers')
 
-region26 <- read_excel("C:\\Users\\beyza\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "Bolge26")
+region26 <- read_excel("C:\\Users\\zeyne\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "Bolge26")
 names(region26) <- c('region','region2id','workforce15plus','workforce1564','usableincome')
 
-migration <- read_excel("C:\\Users\\beyza\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "Goc Bilgileri")
+migration <- read_excel("C:\\Users\\zeyne\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "Goc Bilgileri")
 names(migration) <- c('IDD','male2','female2','turnbackfamily','unknowns2','betterlifecond','others','education','retirement','buyhome','familymig','finjob','maritalstatuschange','health','appointment','age04_2','age59_2','age1014_2','age1519_2','age2024_2','age2529_2','age3034_2','age3539_2','age4044_2','university2','highschool2','middleschool2', 'elementaryschool2')
 
 
