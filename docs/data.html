@@ -209,36 +209,71 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>                                                    age2024_2,age2529_2,age3034_2,age3539_2,age4044_2),<span class="at">names_to =</span> <span class="st">"agerange2"</span>,<span class="at">values_to =</span> <span class="st">"agerange_value2"</span>)</span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>last_migration_tidy_data <span class="ot">&lt;-</span> tidy_data_age <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(<span class="fu">c</span>(university2,highschool2,middleschool2,elementaryschool2),<span class="at">names_to =</span> <span class="st">"education2"</span>,<span class="at">values_to =</span> <span class="st">"education_value2"</span>)</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co"># tidy region26 data set</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>tidy_region26 <span class="ot">&lt;-</span> region26 <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(<span class="fu">c</span>(workforce15plus,workforce1564),<span class="at">names_to =</span> <span class="st">"workforce"</span>,<span class="at">values_to =</span> <span class="st">"workforce_values"</span>)</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co"># tidy population data set</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>tidy_data_gender2 <span class="ot">&lt;-</span> population <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(<span class="fu">c</span>(male,female),<span class="at">names_to =</span> <span class="st">"gender"</span>,<span class="at">values_to =</span> <span class="st">"gender_value"</span>) </span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>tidy_data_age <span class="ot">&lt;-</span> tidy_data_gender2 <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(<span class="fu">c</span>(age04,age59,age1014,age1519,</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>                                                    age2024,age2529,age3034,age3539,age4044,otherage),<span class="at">names_to =</span> <span class="st">"agerange"</span>,<span class="at">values_to =</span> <span class="st">"agerange_value"</span>)</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>tidy_literate <span class="ot">&lt;-</span> tidy_data_age <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(<span class="fu">c</span>(unknowns,literatebutnoschool,notliterate),<span class="at">names_to =</span> <span class="st">"literate"</span>,<span class="at">values_to =</span> <span class="st">"literate_values"</span>)</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>last_tidy_data_education2 <span class="ot">&lt;-</span> tidy_literate<span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(<span class="fu">c</span>(university,highschool,middleschool,elementaryedu,doctorate,primaryedu,master),<span class="at">names_to =</span> <span class="st">"education"</span>,<span class="at">values_to =</span> <span class="st">"education_value"</span>)</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>last_population_tidy_data <span class="ot">&lt;-</span> last_tidy_data_education2 <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(<span class="fu">c</span>(fertilityrate,electricity,numberofattempts,housingsalesnumbers),<span class="at">names_to =</span> <span class="st">"othervariables"</span>,<span class="at">values_to =</span> <span class="st">"othervariables_value"</span>)</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>population<span class="sc">$</span><span class="st">`</span><span class="at">region2id</span><span class="st">`</span><span class="ot">&lt;-</span> <span class="st">""</span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(population)) {</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>  city <span class="ot">&lt;-</span> population<span class="sc">$</span>city[i]</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(region26<span class="sc">$</span>region)) {</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">grepl</span>(city, region26<span class="sc">$</span>region[j])) {</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>      population<span class="sc">$</span><span class="st">`</span><span class="at">region2id</span><span class="st">`</span>[i] <span class="ot">&lt;-</span> <span class="fu">paste</span>(region26<span class="sc">$</span><span class="st">`</span><span class="at">region2id</span><span class="st">`</span>[j])</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span> </span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(last_migration_tidy_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 11
+    IDD city  regions         gender2 gender_value2 migrationcauses
+  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;           &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt;          
+1     1 Adana Akdeniz Bölgesi male2           25200 turnbackfamily 
+2     1 Adana Akdeniz Bölgesi male2           25200 turnbackfamily 
+3     1 Adana Akdeniz Bölgesi male2           25200 turnbackfamily 
+4     1 Adana Akdeniz Bölgesi male2           25200 turnbackfamily 
+5     1 Adana Akdeniz Bölgesi male2           25200 turnbackfamily 
+6     1 Adana Akdeniz Bölgesi male2           25200 turnbackfamily 
+# ℹ 5 more variables: migrationcauses_value &lt;dbl&gt;, agerange2 &lt;chr&gt;,
+#   agerange_value2 &lt;dbl&gt;, education2 &lt;chr&gt;, education_value2 &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tidy region26 data set</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>tidy_region26 <span class="ot">&lt;-</span> region26 <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(<span class="fu">c</span>(workforce15plus,workforce1564),<span class="at">names_to =</span> <span class="st">"workforce"</span>,<span class="at">values_to =</span> <span class="st">"workforce_values"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tidy_region26)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+  region                     region2id usableincome workforce   workforce_values
+  &lt;chr&gt;                      &lt;chr&gt;            &lt;dbl&gt; &lt;chr&gt;                  &lt;dbl&gt;
+1 Adana, Mersin              TR62             0.382 workforce1…             1579
+2 Adana, Mersin              TR62             0.382 workforce1…             1528
+3 Ağrı, Kars, Iğdır, Ardahan TRA2             0.381 workforce1…              383
+4 Ağrı, Kars, Iğdır, Ardahan TRA2             0.381 workforce1…              369
+5 Ankara                     TR51             0.353 workforce1…             2341
+6 Ankara                     TR51             0.353 workforce1…             2308</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tidy population data set</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>tidy_data_gender2 <span class="ot">&lt;-</span> population <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(<span class="fu">c</span>(male,female),<span class="at">names_to =</span> <span class="st">"gender"</span>,<span class="at">values_to =</span> <span class="st">"gender_value"</span>) </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>tidy_data_age <span class="ot">&lt;-</span> tidy_data_gender2 <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(<span class="fu">c</span>(age04,age59,age1014,age1519,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                                                    age2024,age2529,age3034,age3539,age4044,otherage),<span class="at">names_to =</span> <span class="st">"agerange"</span>,<span class="at">values_to =</span> <span class="st">"agerange_value"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>tidy_literate <span class="ot">&lt;-</span> tidy_data_age <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(<span class="fu">c</span>(unknowns,literatebutnoschool,notliterate),<span class="at">names_to =</span> <span class="st">"literate"</span>,<span class="at">values_to =</span> <span class="st">"literate_values"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>last_tidy_data_education2 <span class="ot">&lt;-</span> tidy_literate<span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(<span class="fu">c</span>(university,highschool,middleschool,elementaryedu,doctorate,primaryedu,master),<span class="at">names_to =</span> <span class="st">"education"</span>,<span class="at">values_to =</span> <span class="st">"education_value"</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>last_population_tidy_data <span class="ot">&lt;-</span> last_tidy_data_education2 <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(<span class="fu">c</span>(fertilityrate,electricity,numberofattempts,housingsalesnumbers),<span class="at">names_to =</span> <span class="st">"othervariables"</span>,<span class="at">values_to =</span> <span class="st">"othervariables_value"</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(last_population_tidy_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 15
+    IDD city  regionid regions         totalpop gender gender_value agerange
+  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;   
+1     1 Adana A        Akdeniz Bölgesi  2263373 male        1130862 age04   
+2     1 Adana A        Akdeniz Bölgesi  2263373 male        1130862 age04   
+3     1 Adana A        Akdeniz Bölgesi  2263373 male        1130862 age04   
+4     1 Adana A        Akdeniz Bölgesi  2263373 male        1130862 age04   
+5     1 Adana A        Akdeniz Bölgesi  2263373 male        1130862 age04   
+6     1 Adana A        Akdeniz Bölgesi  2263373 male        1130862 age04   
+# ℹ 7 more variables: agerange_value &lt;dbl&gt;, literate &lt;chr&gt;,
+#   literate_values &lt;dbl&gt;, education &lt;chr&gt;, education_value &lt;dbl&gt;,
+#   othervariables &lt;chr&gt;, othervariables_value &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>population<span class="sc">$</span><span class="st">`</span><span class="at">region2id</span><span class="st">`</span><span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(population)) {</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  city <span class="ot">&lt;-</span> population<span class="sc">$</span>city[i]</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(region26<span class="sc">$</span>region)) {</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">grepl</span>(city, region26<span class="sc">$</span>region[j])) {</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>      population<span class="sc">$</span><span class="st">`</span><span class="at">region2id</span><span class="st">`</span>[i] <span class="ot">&lt;-</span> <span class="fu">paste</span>(region26<span class="sc">$</span><span class="st">`</span><span class="at">region2id</span><span class="st">`</span>[j])</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span> </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

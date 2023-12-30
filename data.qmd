@@ -57,11 +57,11 @@ tidy_data_age <- tidy_data_causes |> pivot_longer(c(age04_2,age59_2,age1014_2,ag
                                                     age2024_2,age2529_2,age3034_2,age3539_2,age4044_2),names_to = "agerange2",values_to = "agerange_value2")
 
 last_migration_tidy_data <- tidy_data_age |> pivot_longer(c(university2,highschool2,middleschool2,elementaryschool2),names_to = "education2",values_to = "education_value2")
-
+head(last_migration_tidy_data)
 
 # tidy region26 data set
 tidy_region26 <- region26 |> pivot_longer(c(workforce15plus,workforce1564),names_to = "workforce",values_to = "workforce_values")
-
+head(tidy_region26)
 
 # tidy population data set
 tidy_data_gender2 <- population |> pivot_longer(c(male,female),names_to = "gender",values_to = "gender_value") 
@@ -74,7 +74,7 @@ tidy_literate <- tidy_data_age |> pivot_longer(c(unknowns,literatebutnoschool,no
 last_tidy_data_education2 <- tidy_literate|> pivot_longer(c(university,highschool,middleschool,elementaryedu,doctorate,primaryedu,master),names_to = "education",values_to = "education_value")
 
 last_population_tidy_data <- last_tidy_data_education2 |> pivot_longer(c(fertilityrate,electricity,numberofattempts,housingsalesnumbers),names_to = "othervariables",values_to = "othervariables_value")
-
+head(last_population_tidy_data)
 
 population$`region2id`<- ""
 for (i in 1:nrow(population)) {
