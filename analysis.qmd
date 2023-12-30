@@ -12,6 +12,7 @@ library(readr)
 library(gridExtra)
 library(dplyr)
 
+<<<<<<< Updated upstream
 population <- read_excel("C:\\Users\\melek\\desktop\\DataVizards_FinalDataFrame.xlsx")
 names(population) <- c('IDD','city','regionid','regions','totalpop','male','female','age04','age59','age1014','age1519','age2024','age2529','age3034','age3539','age4044','otherage','unknowns','doctorate','primaryedu','elementaryedu','highschool','literatebutnoschool','notliterate','middleschool','master','university','fertilityrate','electricity','numberofattempts','housingsalesnumbers')
 
@@ -19,6 +20,15 @@ region26 <- read_excel("C:\\Users\\melek\\desktop\\DataVizards_FinalDataFrame.xl
 names(region26) <- c('region','region2id','workforce15plus','workforce1564','usableincome')
 
 migration <- read_excel("C:\\Users\\melek\\desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "Goc Bilgileri")
+=======
+population <- read_excel("C:\\Users\\sadiy\\Downloads\\DataVizards_FinalDataFrame.xlsx")
+names(population) <- c('IDD','city','regionid','regions','totalpop','male','female','age04','age59','age1014','age1519','age2024','age2529','age3034','age3539','age4044','otherage','unknowns','doctorate','primaryedu','elementaryedu','highschool','literatebutnoschool','notliterate','middleschool','master','university','fertilityrate','electricity','numberofattempts','housingsalesnumbers')
+
+region26 <- read_excel("C:\\Users\\sadiy\\Downloads\\DataVizards_FinalDataFrame.xlsx", sheet = "Bolge26")
+names(region26) <- c('region','region2id','workforce15plus','workforce1564','usableincome')
+
+migration <- read_excel("C:\\Users\\sadiy\\Downloads\\DataVizards_FinalDataFrame.xlsx", sheet = "Goc Bilgileri")
+>>>>>>> Stashed changes
 names(migration) <- c('IDD','male2','female2','turnbackfamily','unknowns2','betterlifecond','others','education','retirement','buyhome','familymig','finjob','maritalstatuschange','health','appointment','age04_2','age59_2','age1014_2','age1519_2','age2024_2','age2529_2','age3034_2','age3539_2','age4044_2','university2','highschool2','middleschool2', 'elementaryschool2')
 
 
@@ -348,17 +358,16 @@ ggplot(rates_data_tidy, aes(x = region2id, y = rate_value, fill = rate_type)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 50)) +
   scale_fill_brewer(palette = "Set3") +
   scale_y_continuous(labels = scales::comma)
-
-
-
 ```
+
 
 The high education level of the Marmara Region may cause electricity consumption to be high in this region. However, other regions appear to have lower-than-expected electricity consumption. While high usage is expected due to illegal electricity use, especially in Eastern Anatolia, the data do not support this prediction.
 
 Since the Aegean Region is a summer resort, it was expected that house sales would be high. The fact that Southeastern Anatolia has the lowest housing sales rates is an expected result due to the development level of the region.
 
 Number of Initiatives and Touristic Regions: The fact that the Black Sea is a region with an unexpectedly high number of initiatives may be due to the fact that it is a touristic region. This supports our prediction, as the Aegean Region ranks second as a touristic region. It is relatively expected that Southeastern Anatolia has the lowest number of startups.
+The fact that the Black Sea is a region with an unexpectedly high number of initiatives may be due to the fact that it is a touristic region. This supports our prediction, as the Aegean Region ranks second as a touristic region. It is relatively expected that Southeastern Anatolia has the lowest number of startups.
 
 When looking at correlation analyses, although the correlation between electricity consumption and migration rates has the highest value, this relationship cannot be said to be linear. The observed high value of the correlation between education level and electricity consumption (close to 1) supports that high education level may be related to electricity consumption. We obtained results that support our opinion stated in first sentence.
 
-In the analyzes made on a regional basis, no significant relationship is seen. It is observed that each region is associated with different data sets at different levels compared to the other.
+In the analyzes made on a regional basis, no significant relationship is seen. It is observed that each region is associated with different data sets at different levels compared to the other
