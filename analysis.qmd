@@ -12,13 +12,13 @@ library(readr)
 library(gridExtra)
 library(dplyr)
 
-population <- read_excel("C:\\Users\\ekene\\Downloads\\DataVizards_FinalDataFrame.xlsx")
+population <- read_excel("C:\\Users\\beyza\\desktop\\DataVizards_FinalDataFrame.xlsx")
 names(population) <- c('IDD','city','regionid','regions','totalpop','male','female','age04','age59','age1014','age1519','age2024','age2529','age3034','age3539','age4044','otherage','unknowns','doctorate','primaryedu','elementaryedu','highschool','literatebutnoschool','notliterate','middleschool','master','university','fertilityrate','electricity','numberofattempts','housingsalesnumbers')
 
-region26 <- read_excel("C:\\Users\\ekene\\Downloads\\DataVizards_FinalDataFrame.xlsx", sheet = "Bolge26")
+region26 <- read_excel("C:\\Users\\beyza\\desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "Bolge26")
 names(region26) <- c('region','region2id','workforce15plus','workforce1564','usableincome')
 
-migration <- read_excel("C:\\Users\\ekene\\Downloads\\DataVizards_FinalDataFrame.xlsx", sheet = "Goc Bilgileri")
+migration <- read_excel("C:\\Users\\beyza\\desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "Goc Bilgileri")
 names(migration) <- c('IDD','male2','female2','turnbackfamily','unknowns2','betterlifecond','others','education','retirement','buyhome','familymig','finjob','maritalstatuschange','health','appointment','age04_2','age59_2','age1014_2','age1519_2','age2024_2','age2529_2','age3034_2','age3539_2','age4044_2','university2','highschool2','middleschool2', 'elementaryschool2')
 
 
@@ -100,13 +100,32 @@ print(region_plot)
 When we analyze migration reasons on a regional basis, we observe that under the category of 'different reasons,' the highest migration has occurred to the Marmara region. Following the Marmara region, the second-highest migration took place to the Central Anatolia region. This drew our attention to a few points. We had expected that the highest migration due to retirement would be to the Mediterranean or Aegean regions, but it turned out that the majority of migration happened to the Marmara region.
 
 ```{r}
-city_plot <- last_migration_tidy_data |> filter(city %in% c("Ankara","D0stanbul","D0zmir","Antalya","Trabzon","ADrD1","EanlD1urfa")) |> select(migrationcauses,migrationcauses_value,city) |>
+city_plot <- last_migration_tidy_data |> filter(city %in% c("Ankara","İstanbul","İzmir","Antalya","Trabzon","Ağrı","Şanlıurfa")) |> select(migrationcauses,migrationcauses_value,city) |>
   ggplot(aes(migrationcauses,migrationcauses_value)) + geom_point(aes(color = city)) +
   ggtitle("Metropolitan Cities and Reasons for Migration") + xlab("Migration Causes") +
   ylab("Migration Values") + theme(axis.text.x = element_text(angle= 90, hjust = 1)) + xlab("") + scale_y_continuous(trans = "log2")  
 print(city_plot)
 ```
-While creating this graph, we included the most populous cities of each region because plotting for all 81 provinces would be quite challenging. As seen in this graph, the highest migration, due to different reasons, has been to Istanbul, followed by Ankara. What surprised us again is that the highest migration due to retirement is to D0stanbul and Ankara."
+While creating this graph, we included the most populous cities of each region because plotting for all 81 provinces would be quite challenging. As seen in this graph, the highest migration, due to different reasons, has been to Istanbul, followed by Ankara. What surprised us again is that the highest migration due to retirement is to İstanbul and Ankara."
+
+```{r}
+migration_gender2 <- last_migration_tidy_data |> mutate(rate = (last_migration_tidy_data$migrationcauses_value) / (last_migration_tidy_data$gender_value2))
+
+region_rate_plot <- migration_gender2 |> ggplot(aes(migrationcauses,rate)) + geom_point(aes(color = regions)) +
+  ggtitle("Regions and Migration Rates") + xlab("Migration Causes") +
+  ylab("Migration Rates") + theme(axis.text.x = element_text(angle= 45, hjust = 1)) + xlab("") + scale_y_continuous(trans = "log2")
+  print(region_rate_plot)
+```
+In the above plots , plotted values were migration values with respect to migration reason and we got some results that we were not expecting. To understand the situation deeply we plotted migration rates rather than migration values and result was more of what we were expected to see. For example migration due to retirement was actually occurring to Central Anatolian Region and Black Sea Region.
+
+```{r}
+migration_gender2 <- last_migration_tidy_data |> mutate(rate = (last_migration_tidy_data$migrationcauses_value) / (last_migration_tidy_data$gender_value2))
+city_rate_plot <- migration_gender2 |> filter(city %in% c("Ankara","İstanbul","İzmir","Antalya","Trabzon","Ağrı","Şanlıurfa")) |> ggplot(aes(migrationcauses,rate)) + geom_point(aes(color = city)) +
+    ggtitle("Metropolitan Cities and Migration Rates") + xlab("Migration Causes") +
+    ylab("Migration Rates") + theme(axis.text.x = element_text(angle= 45, hjust = 1)) + xlab("") + scale_y_continuous(trans = "log2")  
+  print(city_rate_plot) 
+```
+In the same fashion, the city that people migrate the most due to retirement is Trabzon followed by İzmir and Ankara
 
 ```{r}
 last_migration_tidy_data |> mutate(agerange2 = reorder(agerange2, agerange_value2, FUN = median)) |>
