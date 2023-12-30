@@ -149,35 +149,51 @@ This value indicates a moderate positive relationship between migration reasons 
 ```{r}
 #| warning: false
 library(tidyverse)
+# Extracting necessary columns from the 'last_tidy_data_education2' dataset
 data <- last_tidy_data_education2 %>%
   select(regions, education, education_value, fertilityrate) 
+# Calculating average education and fertility rate per region
 education_fertility <- data %>%
   group_by(regions) %>%
-  summarise(avg_education = mean(education_value),
-            avg_fertility = mean(fertilityrate))
+  summarise(
+    avg_education = mean(education_value),  # Calculating the mean education value for each region
+    avg_fertility = mean(fertilityrate)     # Calculating the mean fertility rate for each region
+  )
+# Creating a scatter plot to visualize the relationship between education level and fertility rate across regions
 ggplot(education_fertility, aes(x = avg_education, y = avg_fertility, label = regions)) +
-  geom_point(color = "blue") +
-  geom_text(hjust = 0, vjust = 0, size = 3, color = "black", alpha = 0.8) +
-  labs(title = "Education Level and Fertility Rate in Geographical Regions",
-       x = "Average Education Level",
-       y = "Average Fertility Rate") + scale_x_continuous(labels = scales::comma, breaks = seq(0, 300000, by = 50000))
+  geom_point(color = "blue") +  # Adding points to represent each region
+  geom_text(hjust = 0, vjust = 0, size = 3, color = "black", alpha = 0.8) +  # Adding text labels for regions
+  labs(
+    title = "Education Level and Fertility Rate in Geographical Regions",  # Title of the plot
+    x = "Average Education Level",  # X-axis label
+    y = "Average Fertility Rate"     # Y-axis label
+  ) +
+  scale_x_continuous(labels = scales::comma, breaks = seq(0, 300000, by = 50000))  # Formatting X-axis labels
 ```
 
-From this graph, as the education level increases, the fertility rate decreases. you can see. You can also see that there are differences between geographical regions. For example, the Eastern Anatolia Region has the lowest education level and the fertility rate of this region is above average. This may indicate that the region is inadequate in terms of education and job opportunities. While it attracts attention as a region, the Marmara Region has the highest education level and the lowest fertility rate.It may prove to be attractive in terms of education and job opportunities. It appears as a region.There appears to be a negative relationship between average education level and average fertility rate. That is, as the education level increases, the fertility rate decreases. This may indicate that educated women tend to have fewer children. The relationship between education level and fertility rate varies by region. For example, the Central Anatolia Region stands out as the region with both the highest education level and the highest fertility rate. This may indicate that there is no relationship between education level and fertility rate in this region or that other factors are more influential.
+The scatter plot does not show a clear correlation between the average education level and fertility rate across regions. The points representing different regions are scattered without showing a clear trend of increase or decrease. The region with the highest average education level is Marmara, with about 250,000 units of education value. The region with the lowest average education level is Eastern Anatolia Region, with about 50,000 units of education value. The region with the highest average fertility rate is Central Anatolia Region, with above 2.0 children per woman. The region with the lowest average fertility rate is the Marmara Region, with below 1.5 children per woman. There are some outliers in the data, such as Central Anatolia Region, which has a relatively high average education level but also a high average fertility rate, and Mediterranean Region, which has a relatively low average education level but also a low average fertility rate. These outliers may indicate that there are other factors influencing the fertility rate besides the education level, such as culture, religion, income, etc. The surprising point in this data is that I expected the Eastern Anatolia Region to have the highest fertility rate. The low population registration rates in that region may be one of the reasons affecting the data output. According to TUIK data, the population registration rate of the Eastern Anatolia Region is 97.92%, which is 98.82% below the Turkey average. This may mean that some of the children born in this region are not registered.
 
 ```{r}
+#| warning: false
 library(tidyverse)
-
+# Merging population and migration datasets based on the 'city' column
 merged_data <- population %>%
   inner_join(migration, by = "city") %>%
+  # Selecting specific columns from the merged dataset
   select(city, region2id, university2, highschool2, middleschool2, elementaryschool2)
 
+# Transforming the merged data into a tidy format using pivot_longer
 merged_data_tidy <- merged_data %>%
-  pivot_longer(cols = c(university2, highschool2, middleschool2, elementaryschool2),
-               names_to = "education_level", values_to = "migration_count") %>%
+  pivot_longer(
+    cols = c(university2, highschool2, middleschool2, elementaryschool2),
+    names_to = "education_level",
+    values_to = "migration_count"
+  ) %>%
+  # Grouping by region and education level to calculate total migration counts
   group_by(region2id, education_level) %>%
   summarise(total_migration = sum(migration_count, na.rm = TRUE)) %>%
   ungroup() %>%
+  # Renaming education levels for better readability
   mutate(
     education_level = case_when(
       education_level == "university2" ~ "University",
@@ -186,25 +202,30 @@ merged_data_tidy <- merged_data %>%
       education_level == "elementaryschool2" ~ "Elementary School",
       TRUE ~ as.character(education_level)
     )
-  )  # Mutate i??lemi burada kapanmal??
+  )  
 
+# Sorting regions based on total migration counts
 sorted_regions <- merged_data_tidy %>%
   group_by(region2id) %>%
   summarise(total_migration = sum(total_migration, na.rm = TRUE)) %>%
   arrange(desc(total_migration)) %>% 
   pull(region2id)
 
+# Reordering factor levels of 'region2id' based on sorted regions
 merged_data_tidy$region2id <- factor(merged_data_tidy$region2id, levels = sorted_regions)
 
+# Creating a stacked bar plot to visualize migration distribution by education levels across regions
 ggplot(merged_data_tidy, aes(x = region2id, y = total_migration, fill = education_level)) +
-  geom_bar(stat = "identity", position = "stack") +
-  labs(title = "Migration Distribution by Education Levels for 26 Regions",
-       x = "Regions",
-       y = "Number of People Immigrating",
-       fill = "Education Levels") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  scale_fill_brewer(palette = "Set3") +
-  scale_y_continuous(labels = scales::comma)
+  geom_bar(stat = "identity", position = "stack") +  # Stacked bar plot
+  labs(
+    title = "Migration Distribution by Education Levels for 26 Regions",  # Title of the plot
+    x = "Regions",  # X-axis label
+    y = "Number of People Immigrating",  # Y-axis label
+    fill = "Education Levels"  # Legend label
+  ) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +  # Rotating x-axis labels for better readability
+  scale_fill_brewer(palette = "Set3") +  # Setting color palette for education levels
+  scale_y_continuous(labels = scales::comma)  # Formatting Y-axis labels using commas for better readability
 
 
 ```
@@ -212,14 +233,22 @@ ggplot(merged_data_tidy, aes(x = region2id, y = total_migration, fill = educatio
 It is seen that immigrants with high education levels mostly migrate to regions numbered TR10, TR51 and TR42. These regions cover the northwestern, western and southwestern regions of Turkey. It may indicate that these regions are more attractive in terms of education and job opportunities. It is seen that immigrants with low education level mostly migrate to TR81, TR82 and TRA2 regions. These regions cover the northeastern, eastern and southeastern regions of Turkey. It may indicate that these regions are poorer in terms of education and job opportunities. It may indicate that other Regions are average in terms of education and job opportunities.
 
 ```{r}
+#| warning: false
 library(tidyverse)
 
+# Merging two datasets 'population' and 'migration' based on the common column 'city'
 merged_data <- inner_join(population, migration, by = "city") %>%
+  # Selecting specific columns from the merged dataset
   select(city, region2id, university2, doctorate, highschool2, elementaryschool2, middleschool2, finjob)
 
+# Reshaping the data using pivot_longer to gather migration counts for different education levels
 education_migration <- merged_data %>%
-  pivot_longer(cols = c(university2, doctorate, highschool2, elementaryschool2, middleschool2),
-               names_to = "education_level", values_to = "migration_count") %>%
+  pivot_longer(
+    cols = c(university2, doctorate, highschool2, elementaryschool2, middleschool2),
+    names_to = "education_level",
+    values_to = "migration_count"
+  ) %>%
+  # Renaming and categorizing education levels for better visualization
   mutate(
     education_level = case_when(
       education_level == "university2" ~ "University",
@@ -231,19 +260,21 @@ education_migration <- merged_data %>%
     )
   )
 
-# Education_level s??tununu fakt??r olarak d??zenleyerek s??ralama yapma
+# Setting the order of the education levels for better visualization
 education_migration$education_level <- factor(education_migration$education_level, 
                                              levels = c("Elementary School", "Middle School", "High School", "University", "Doctorate"))
 
-# Box plotlar?? s??ral?? ??ekilde ??izme
+# Creating a boxplot to visualize the migration count across different education levels
 ggplot(education_migration, aes(x = education_level, y = migration_count, fill = education_level)) +
-  geom_boxplot() +
-  labs(title = "Migration by Education Level",
-       x = "Education Level",
-       y = "Migration Count",
-       fill = "Education Level") +
-  theme_minimal() + 
-  scale_y_continuous(labels = scales::comma)
+  geom_boxplot() +  # Adding boxplot geometry
+  labs(
+    title = "Migration by Education Level",  # Title of the plot
+    x = "Education Level",  # X-axis label
+    y = "Migration Count",  # Y-axis label
+    fill = "Education Level"  # Legend label
+  ) +
+  theme_minimal() +  # Applying a minimal theme to the plot
+  scale_y_continuous(labels = scales::comma)  # Formatting Y-axis labels with commas for thousands
 
 ```
 
