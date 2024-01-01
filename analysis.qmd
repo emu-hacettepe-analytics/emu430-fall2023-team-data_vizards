@@ -369,7 +369,7 @@ In the analyzes made on a regional basis, no significant relationship is seen. I
 
 ```{r}
 #| code-fold: true
-#| code-summary: "Show the code"
+#| code-summary: "Click the see the code"
 ggplot(region26, aes(x = workforce15plus, y = usableincome, label = region2id)) +
 geom_point(color = "blue", size = 3) + 
 geom_text(vjust = -0.5, hjust = -0.5) +
