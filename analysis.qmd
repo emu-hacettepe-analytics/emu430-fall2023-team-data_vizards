@@ -3,6 +3,8 @@ title: "Analysis"
 ---
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Click the see the code"
 #| warning: false
 
 # importing necessary packages
@@ -79,6 +81,8 @@ for (i in 1:nrow(population)) {
 Now that all data preparations are complete, we can begin the process of visualization :)
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Click the see the code"
 #| warning: false
 library(tidyverse)
 library(readxl)
@@ -97,6 +101,8 @@ To have an overview of data on migration causes we plotted a box plot to see wha
 When plotting the box plot we scaled y values to log2 scale to see the distribution better and we ordered the box plots to make it easier to understand which are the most and the least causes of migration.
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Click the see the code"
 region_plot <- last_migration_tidy_data |> select(migrationcauses,migrationcauses_value,regions) |>
   ggplot(aes(migrationcauses,migrationcauses_value)) + geom_point(aes(color = regions)) +
   ggtitle("Regions and Reasons for Migration") + xlab("Migration Causes") +
@@ -107,6 +113,8 @@ print(region_plot)
 When we analyze migration reasons on a regional basis, we observe that under the category of 'different reasons,' the highest migration has occurred to the Marmara region. Following the Marmara region, the second-highest migration took place to the Central Anatolia region. This drew our attention to a few points. We had expected that the highest migration due to retirement would be to the Central Anatolian Region or Aegean Region, but it turned out that the majority of migration happened to the Marmara region.
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Click the see the code"
 city_plot <- last_migration_tidy_data |> filter(city %in% c("Ankara","İstanbul","İzmir","Antalya","Trabzon","Ağrı","Şanlıurfa")) |> select(migrationcauses,migrationcauses_value,city) |>
   ggplot(aes(migrationcauses,migrationcauses_value)) + geom_point(aes(color = city)) +
   ggtitle("Metropolitan Cities and Reasons for Migration") + xlab("Migration Causes") +
@@ -117,6 +125,8 @@ print(city_plot)
 While creating this graph, we included the most populous cities of each region because plotting for all 81 provinces would be quite challenging. As seen in this graph, the highest migration, due to different reasons, has been to Istanbul, followed by Ankara. What surprised us again is that the highest migration due to retirement is to İstanbul and Ankara."
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Click the see the code"
 migration_gender2 <- last_migration_tidy_data |> mutate(rate = (last_migration_tidy_data$migrationcauses_value) / (last_migration_tidy_data$gender_value2))
 
 region_rate_plot <- migration_gender2 |> ggplot(aes(migrationcauses,rate)) + geom_point(aes(color = regions)) +
@@ -128,6 +138,8 @@ region_rate_plot <- migration_gender2 |> ggplot(aes(migrationcauses,rate)) + geo
 In the above plots , plotted values were migration values with respect to migration reason and we got some results that we were not expecting. To understand the situation deeply we plotted migration rates rather than migration values and result was more of what we were expected to see. For example migration due to retirement was actually occurring to Central Anatolian Region and Black Sea Region.
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Click the see the code"
 migration_gender2 <- last_migration_tidy_data |> mutate(rate = (last_migration_tidy_data$migrationcauses_value) / (last_migration_tidy_data$gender_value2))
 city_rate_plot <- migration_gender2 |> filter(city %in% c("Ankara","İstanbul","İzmir","Antalya","Trabzon","Ağrı","Şanlıurfa")) |> ggplot(aes(migrationcauses,rate)) + geom_point(aes(color = city)) +
     ggtitle("Metropolitan Cities and Migration Rates") + xlab("Migration Causes") +
@@ -138,6 +150,8 @@ city_rate_plot <- migration_gender2 |> filter(city %in% c("Ankara","İstanbul","
 In the same fashion, the city that people migrate the most due to retirement is Trabzon followed by İzmir and Ankara
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Click the see the code"
 last_migration_tidy_data |> mutate(agerange2 = reorder(agerange2, agerange_value2, FUN = median)) |>
   ggplot(aes(agerange2,agerange_value2,fill = agerange2)) +
   geom_boxplot() + ggtitle("Immigration Data of Age Ranges") + xlab("Age Ranges") +
@@ -148,12 +162,16 @@ last_migration_tidy_data |> mutate(agerange2 = reorder(agerange2, agerange_value
 When we look at the graph, we see that the age range of the people who migrate the most is 20-24. The 15-19 age range ranks second. The age range of people who migrate the least is observed to be 40-44. When we look at the Immigration Data of Age Ranges, we see that the most immigration age range is 20-24. We can say that education was the highest value among the reasons for immigration and this is consistent with this. Likewise, the second place is 15-19. It can be interpreted that high school students also migrate for education. "finjob" ranks in the middle list of reasons for migration. If we consider 25-29 as the age for finding a job, we can comment that people aged 25-29 do not migrate only for the purpose of finding a job. For example, they may have migrated due to better living conditions. When we look at the graph, we see that the migration age of 40-44 migrates the least compared to other ages. In our opinion, we can conclude from the graph that people who are used to a certain order no longer want change. According to the chart, 10-14 years old is the second to last migration age range. "familymig" ranked second among the reasons for migration. We can say that there is a contradiction here. We would have expected a higher number of people migrating for health reasons. Health is very important for everyone, but unfortunately health services are not developed everywhere. Health problems are a factor that can be seen in all age groups, so we would expect the values to be high.
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Click the see the code"
 cor(last_migration_tidy_data$migrationcauses_value, last_migration_tidy_data$agerange_value2)
 ```
 
 This value indicates a moderate positive relationship between migration reasons and age ranges.
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Click the see the code"
 #| warning: false
 library(tidyverse)
 # Extracting necessary columns from the 'last_tidy_data_education2' dataset
@@ -181,6 +199,8 @@ ggplot(education_fertility, aes(x = avg_education, y = avg_fertility, label = re
 The scatter plot does not show a clear correlation between the average education level and fertility rate across regions. The points representing different regions are scattered without showing a clear trend of increase or decrease. The region with the highest average education level is Marmara, with about 250,000 units of education value. The region with the lowest average education level is Eastern Anatolia Region, with about 50,000 units of education value. The region with the highest average fertility rate is Central Anatolia Region, with above 2.0 children per woman. The region with the lowest average fertility rate is the Marmara Region, with below 1.5 children per woman. There are some outliers in the data, such as Central Anatolia Region, which has a relatively high average education level but also a high average fertility rate, and Mediterranean Region, which has a relatively low average education level but also a low average fertility rate. These outliers may indicate that there are other factors influencing the fertility rate besides the education level, such as culture, religion, income, etc. The surprising point in this data is that I expected the Eastern Anatolia Region to have the highest fertility rate. The low population registration rates in that region may be one of the reasons affecting the data output. According to TUIK data, the population registration rate of the Eastern Anatolia Region is 97.92%, which is 98.82% below the Turkey average. This may mean that some of the children born in this region are not registered.
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Click the see the code"
 #| warning: false
 library(tidyverse)
 # Merging population and migration datasets based on the 'city' column
@@ -240,6 +260,8 @@ ggplot(merged_data_tidy, aes(x = region2id, y = total_migration, fill = educatio
 It is seen that immigrants with high education levels mostly migrate to regions numbered TR10, TR51 and TR42. These regions cover the northwestern, western and southwestern regions of Turkey. It may indicate that these regions are more attractive in terms of education and job opportunities. It is seen that immigrants with low education level mostly migrate to TR81, TR82 and TRA2 regions. These regions cover the northeastern, eastern and southeastern regions of Turkey. It may indicate that these regions are poorer in terms of education and job opportunities. It may indicate that other Regions are average in terms of education and job opportunities.
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Click the see the code"
 #| warning: false
 library(tidyverse)
 
@@ -288,6 +310,8 @@ ggplot(education_migration, aes(x = education_level, y = migration_count, fill =
 On the x axis, there are four education levels: doctorate, primary school, high school and university. On the Y axis, the number of people migrating is shown with values ranging from 0 to 100,000. In the graph, the number of migrations of individuals at doctoral or primary school level is much less than that of individuals at high school and university levels. In the graph, the highest number of migrations is seen among individuals at university level. This is followed by individuals at the high school level. It is seen that individuals with a higher level of education migrate less than individuals with a lower level of education. This may indicate that individuals with higher levels of education are more dependent on working conditions or find fewer job opportunities. It is seen that individuals with low education levels migrate more than individuals with high education levels. This may indicate that individuals with lower levels of education strive more to improve their living conditions or are under more pressure.
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Click the see the code"
 migration_rate <- (migration$male2+migration$female2)/population$totalpop
 numberofattempts_rate <- population$numberofattempts/population$totalpop
 housingsalesnumbers_rate <- population$housingsalesnumbers/population$totalpop

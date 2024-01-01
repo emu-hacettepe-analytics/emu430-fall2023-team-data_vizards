@@ -169,6 +169,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <div class="cell">
+<details>
+<summary>Click the see the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># importing necessary packages</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
@@ -208,6 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>last_migration_tidy_data <span class="ot">&lt;-</span> tidy_data_age <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(<span class="fu">c</span>(university2,highschool2,middleschool2,elementaryschool2),<span class="at">names_to =</span> <span class="st">"education2"</span>,<span class="at">values_to =</span> <span class="st">"education_value2"</span>)</span>
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(last_migration_tidy_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 11
     IDD city  regions         gender2 gender_value2 migrationcauses
@@ -221,9 +224,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 # ℹ 5 more variables: migrationcauses_value &lt;dbl&gt;, agerange2 &lt;chr&gt;,
 #   agerange_value2 &lt;dbl&gt;, education2 &lt;chr&gt;, education_value2 &lt;dbl&gt;</code></pre>
 </div>
+<details>
+<summary>Click the see the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tidy region26 dataset</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>tidy_region26 <span class="ot">&lt;-</span> region26 <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(<span class="fu">c</span>(workforce15plus,workforce1564),<span class="at">names_to =</span> <span class="st">"workforce"</span>,<span class="at">values_to =</span> <span class="st">"workforce_values"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tidy_region26)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 5
   region                     region2id usableincome workforce   workforce_values
@@ -235,6 +241,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 5 Ankara                     TR51             0.353 workforce1…             2341
 6 Ankara                     TR51             0.353 workforce1…             2308</code></pre>
 </div>
+<details>
+<summary>Click the see the code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tidy population dataset</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>tidy_data_gender2 <span class="ot">&lt;-</span> population <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(<span class="fu">c</span>(male,female),<span class="at">names_to =</span> <span class="st">"gender"</span>,<span class="at">values_to =</span> <span class="st">"gender_value"</span>) </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -247,6 +255,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>last_population_tidy_data <span class="ot">&lt;-</span> last_tidy_data_education2 <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(<span class="fu">c</span>(fertilityrate,electricity,numberofattempts,housingsalesnumbers),<span class="at">names_to =</span> <span class="st">"othervariables"</span>,<span class="at">values_to =</span> <span class="st">"othervariables_value"</span>)</span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(last_population_tidy_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 15
     IDD city  regionid regions         totalpop gender gender_value agerange
@@ -261,6 +270,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 #   literate_values &lt;dbl&gt;, education &lt;chr&gt;, education_value &lt;dbl&gt;,
 #   othervariables &lt;chr&gt;, othervariables_value &lt;dbl&gt;</code></pre>
 </div>
+<details>
+<summary>Click the see the code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>population<span class="sc">$</span><span class="st">`</span><span class="at">region2id</span><span class="st">`</span><span class="ot">&lt;-</span> <span class="st">""</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(population)) {</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  city <span class="ot">&lt;-</span> population<span class="sc">$</span>city[i]</span>
@@ -272,9 +283,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>Now that all data preparations are complete, we can begin the process of visualization :)</p>
 <div class="cell">
+<details>
+<summary>Click the see the code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
@@ -285,6 +299,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"Migration Causes"</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Migration Causes"</span>) <span class="sc">+</span></span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Values"</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle=</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">""</span>) <span class="sc">+</span></span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">trans =</span> <span class="st">"log2"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <p><img src="analysis_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -292,69 +307,89 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>To have an overview of data on migration causes we plotted a box plot to see what reasons cause migration the most. Box plot shows that education is the most common reason for migration followed by migration due to a family member and better life conditions.</p>
 <p>When plotting the box plot we scaled y values to log2 scale to see the distribution better and we ordered the box plots to make it easier to understand which are the most and the least causes of migration.</p>
 <div class="cell">
+<details>
+<summary>Click the see the code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>region_plot <span class="ot">&lt;-</span> last_migration_tidy_data <span class="sc">|&gt;</span> <span class="fu">select</span>(migrationcauses,migrationcauses_value,regions) <span class="sc">|&gt;</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(migrationcauses,migrationcauses_value)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> regions)) <span class="sc">+</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Regions and Reasons for Migration"</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Migration Causes"</span>) <span class="sc">+</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Migration Values"</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle=</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">""</span>) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">trans =</span> <span class="st">"log2"</span>)  </span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(region_plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <p><img src="analysis_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>When we analyze migration reasons on a regional basis, we observe that under the category of ‘different reasons,’ the highest migration has occurred to the Marmara region. Following the Marmara region, the second-highest migration took place to the Central Anatolia region. This drew our attention to a few points. We had expected that the highest migration due to retirement would be to the Central Anatolian Region or Aegean Region, but it turned out that the majority of migration happened to the Marmara region.</p>
 <div class="cell">
+<details>
+<summary>Click the see the code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>city_plot <span class="ot">&lt;-</span> last_migration_tidy_data <span class="sc">|&gt;</span> <span class="fu">filter</span>(city <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ankara"</span>,<span class="st">"İstanbul"</span>,<span class="st">"İzmir"</span>,<span class="st">"Antalya"</span>,<span class="st">"Trabzon"</span>,<span class="st">"Ağrı"</span>,<span class="st">"Şanlıurfa"</span>)) <span class="sc">|&gt;</span> <span class="fu">select</span>(migrationcauses,migrationcauses_value,city) <span class="sc">|&gt;</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(migrationcauses,migrationcauses_value)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> city)) <span class="sc">+</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Metropolitan Cities and Reasons for Migration"</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Migration Causes"</span>) <span class="sc">+</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Migration Values"</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle=</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">""</span>) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">trans =</span> <span class="st">"log2"</span>)  </span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(city_plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <p><img src="analysis_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>While creating this graph, we included the most populous cities of each region because plotting for all 81 provinces would be quite challenging. As seen in this graph, the highest migration, due to different reasons, has been to Istanbul, followed by Ankara. What surprised us again is that the highest migration due to retirement is to İstanbul and Ankara.”</p>
 <div class="cell">
+<details>
+<summary>Click the see the code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>migration_gender2 <span class="ot">&lt;-</span> last_migration_tidy_data <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">rate =</span> (last_migration_tidy_data<span class="sc">$</span>migrationcauses_value) <span class="sc">/</span> (last_migration_tidy_data<span class="sc">$</span>gender_value2))</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>region_rate_plot <span class="ot">&lt;-</span> migration_gender2 <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(migrationcauses,rate)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> regions)) <span class="sc">+</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Regions and Migration Rates"</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Migration Causes"</span>) <span class="sc">+</span></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Migration Rates"</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle=</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">""</span>) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">trans =</span> <span class="st">"log2"</span>)</span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(region_rate_plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <p><img src="analysis_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>In the above plots , plotted values were migration values with respect to migration reason and we got some results that we were not expecting. To understand the situation deeply we plotted migration rates rather than migration values and result was more of what we were expected to see. For example migration due to retirement was actually occurring to Central Anatolian Region and Black Sea Region.</p>
 <div class="cell">
+<details>
+<summary>Click the see the code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>migration_gender2 <span class="ot">&lt;-</span> last_migration_tidy_data <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">rate =</span> (last_migration_tidy_data<span class="sc">$</span>migrationcauses_value) <span class="sc">/</span> (last_migration_tidy_data<span class="sc">$</span>gender_value2))</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>city_rate_plot <span class="ot">&lt;-</span> migration_gender2 <span class="sc">|&gt;</span> <span class="fu">filter</span>(city <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ankara"</span>,<span class="st">"İstanbul"</span>,<span class="st">"İzmir"</span>,<span class="st">"Antalya"</span>,<span class="st">"Trabzon"</span>,<span class="st">"Ağrı"</span>,<span class="st">"Şanlıurfa"</span>)) <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(migrationcauses,rate)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> city)) <span class="sc">+</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Metropolitan Cities and Migration Rates"</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Migration Causes"</span>) <span class="sc">+</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">"Migration Rates"</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle=</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">""</span>) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">trans =</span> <span class="st">"log2"</span>)  </span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(city_rate_plot) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <p><img src="analysis_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>In the same fashion, the city that people migrate the most due to retirement is Trabzon followed by İzmir and Ankara</p>
 <div class="cell">
+<details>
+<summary>Click the see the code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>last_migration_tidy_data <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">agerange2 =</span> <span class="fu">reorder</span>(agerange2, agerange_value2, <span class="at">FUN =</span> median)) <span class="sc">|&gt;</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(agerange2,agerange_value2,<span class="at">fill =</span> agerange2)) <span class="sc">+</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"Immigration Data of Age Ranges"</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Age Ranges"</span>) <span class="sc">+</span></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Values"</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle=</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">""</span>) <span class="sc">+</span></span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">trans =</span> <span class="st">"log2"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <p><img src="analysis_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>When we look at the graph, we see that the age range of the people who migrate the most is 20-24. The 15-19 age range ranks second. The age range of people who migrate the least is observed to be 40-44. When we look at the Immigration Data of Age Ranges, we see that the most immigration age range is 20-24. We can say that education was the highest value among the reasons for immigration and this is consistent with this. Likewise, the second place is 15-19. It can be interpreted that high school students also migrate for education. “finjob” ranks in the middle list of reasons for migration. If we consider 25-29 as the age for finding a job, we can comment that people aged 25-29 do not migrate only for the purpose of finding a job. For example, they may have migrated due to better living conditions. When we look at the graph, we see that the migration age of 40-44 migrates the least compared to other ages. In our opinion, we can conclude from the graph that people who are used to a certain order no longer want change. According to the chart, 10-14 years old is the second to last migration age range. “familymig” ranked second among the reasons for migration. We can say that there is a contradiction here. We would have expected a higher number of people migrating for health reasons. Health is very important for everyone, but unfortunately health services are not developed everywhere. Health problems are a factor that can be seen in all age groups, so we would expect the values to be high.</p>
 <div class="cell">
+<details>
+<summary>Click the see the code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(last_migration_tidy_data<span class="sc">$</span>migrationcauses_value, last_migration_tidy_data<span class="sc">$</span>agerange_value2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4977804</code></pre>
 </div>
 </div>
 <p>This value indicates a moderate positive relationship between migration reasons and age ranges.</p>
 <div class="cell">
+<details>
+<summary>Click the see the code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Extracting necessary columns from the 'last_tidy_data_education2' dataset</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> last_tidy_data_education2 <span class="sc">%&gt;%</span></span>
@@ -376,12 +411,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Average Fertility Rate"</span>     <span class="co"># Y-axis label</span></span>
 <span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">300000</span>, <span class="at">by =</span> <span class="dv">50000</span>))  <span class="co"># Formatting X-axis labels</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <p><img src="analysis_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>The scatter plot does not show a clear correlation between the average education level and fertility rate across regions. The points representing different regions are scattered without showing a clear trend of increase or decrease. The region with the highest average education level is Marmara, with about 250,000 units of education value. The region with the lowest average education level is Eastern Anatolia Region, with about 50,000 units of education value. The region with the highest average fertility rate is Central Anatolia Region, with above 2.0 children per woman. The region with the lowest average fertility rate is the Marmara Region, with below 1.5 children per woman. There are some outliers in the data, such as Central Anatolia Region, which has a relatively high average education level but also a high average fertility rate, and Mediterranean Region, which has a relatively low average education level but also a low average fertility rate. These outliers may indicate that there are other factors influencing the fertility rate besides the education level, such as culture, religion, income, etc. The surprising point in this data is that I expected the Eastern Anatolia Region to have the highest fertility rate. The low population registration rates in that region may be one of the reasons affecting the data output. According to TUIK data, the population registration rate of the Eastern Anatolia Region is 97.92%, which is 98.82% below the Turkey average. This may mean that some of the children born in this region are not registered.</p>
 <div class="cell">
+<details>
+<summary>Click the see the code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Merging population and migration datasets based on the 'city' column</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>merged_data <span class="ot">&lt;-</span> population <span class="sc">%&gt;%</span></span>
@@ -433,12 +471,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span>  <span class="co"># Rotating x-axis labels for better readability</span></span>
 <span id="cb17-50"><a href="#cb17-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Set3"</span>) <span class="sc">+</span>  <span class="co"># Setting color palette for education levels</span></span>
 <span id="cb17-51"><a href="#cb17-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)  <span class="co"># Formatting Y-axis labels using commas for better readability</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <p><img src="analysis_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>It is seen that immigrants with high education levels mostly migrate to regions numbered TR10, TR51 and TR42. These regions cover the northwestern, western and southwestern regions of Turkey. It may indicate that these regions are more attractive in terms of education and job opportunities. It is seen that immigrants with low education level mostly migrate to TR81, TR82 and TRA2 regions. These regions cover the northeastern, eastern and southeastern regions of Turkey. It may indicate that these regions are poorer in terms of education and job opportunities. It may indicate that other Regions are average in terms of education and job opportunities.</p>
 <div class="cell">
+<details>
+<summary>Click the see the code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Merging two datasets 'population' and 'migration' based on the common column 'city'</span></span>
@@ -480,12 +521,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span>  <span class="co"># Applying a minimal theme to the plot</span></span>
 <span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)  <span class="co"># Formatting Y-axis labels with commas for thousands</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <p><img src="analysis_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>On the x axis, there are four education levels: doctorate, primary school, high school and university. On the Y axis, the number of people migrating is shown with values ranging from 0 to 100,000. In the graph, the number of migrations of individuals at doctoral or primary school level is much less than that of individuals at high school and university levels. In the graph, the highest number of migrations is seen among individuals at university level. This is followed by individuals at the high school level. It is seen that individuals with a higher level of education migrate less than individuals with a lower level of education. This may indicate that individuals with higher levels of education are more dependent on working conditions or find fewer job opportunities. It is seen that individuals with low education levels migrate more than individuals with high education levels. This may indicate that individuals with lower levels of education strive more to improve their living conditions or are under more pressure.</p>
 <div class="cell">
+<details>
+<summary>Click the see the code</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>migration_rate <span class="ot">&lt;-</span> (migration<span class="sc">$</span>male2<span class="sc">+</span>migration<span class="sc">$</span>female2)<span class="sc">/</span>population<span class="sc">$</span>totalpop</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>numberofattempts_rate <span class="ot">&lt;-</span> population<span class="sc">$</span>numberofattempts<span class="sc">/</span>population<span class="sc">$</span>totalpop</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>housingsalesnumbers_rate <span class="ot">&lt;-</span> population<span class="sc">$</span>housingsalesnumbers<span class="sc">/</span>population<span class="sc">$</span>totalpop</span>
@@ -509,9 +553,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Regions"</span>, <span class="at">y =</span> <span class="st">"Rate"</span>, <span class="at">title =</span> <span class="st">"Interregional Rate Distributions"</span>) <span class="sc">+</span></span>
 <span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> variable, <span class="at">scales =</span> <span class="st">"free_y"</span>, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <p><img src="analysis_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
 </div>
+<details>
+<summary>Click the see the code</summary>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>ratios <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  electricity_rate ,  </span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a> housingsalesnumbers_rate,</span>
@@ -523,6 +570,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>correlation_matrix <span class="ot">&lt;-</span> <span class="fu">cor</span>(ratios)</span>
 <span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(correlation_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>                         electricity_rate housingsalesnumbers_rate
 electricity_rate                1.0000000                0.2673481
@@ -537,6 +585,8 @@ numberofattempts_rate                1.0000000      0.5059387     0.6996717
 migration_rate                       0.5059387      1.0000000     0.8014049
 educated_rate                        0.6996717      0.8014049     1.0000000</code></pre>
 </div>
+<details>
+<summary>Click the see the code</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>population<span class="sc">$</span><span class="st">`</span><span class="at">Migration Rate</span><span class="st">`</span> <span class="ot">&lt;-</span> (migration<span class="sc">$</span>male2 <span class="sc">+</span> migration<span class="sc">$</span>female2) <span class="sc">/</span> population<span class="sc">$</span>totalpop</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>population<span class="sc">$</span><span class="st">`</span><span class="at">Number of Attempts Rate</span><span class="st">`</span> <span class="ot">&lt;-</span> population<span class="sc">$</span>numberofattempts <span class="sc">/</span> population<span class="sc">$</span>totalpop</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>population<span class="sc">$</span><span class="st">`</span><span class="at">Housing Sales Numbers Rate</span><span class="st">`</span> <span class="ot">&lt;-</span> population<span class="sc">$</span>housingsalesnumbers <span class="sc">/</span> population<span class="sc">$</span>totalpop</span>
@@ -564,6 +614,7 @@ educated_rate                        0.6996717      0.8014049     1.0000000</cod
 <span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">50</span>)) <span class="sc">+</span></span>
 <span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Set3"</span>) <span class="sc">+</span></span>
 <span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <p><img src="analysis_files/figure-html/unnamed-chunk-12-2.png" class="img-fluid" width="672"></p>
 </div>
