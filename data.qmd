@@ -27,6 +27,8 @@ In migration data frame, we used 28 columns. Since it contains common columns wi
 There are 5 columns in our region 26 data frame. We explain the columns that are different from our population and migration data frame below. **Region2id** is the second region code specified. **Workforce15plus** and **workforce1564** reflect workforce data aged 15 and over and workforce data between ages 15-64, respectively. This data can influence workforce dynamics in a particular region. The labor force participation rate or workforce structure of migrating individuals may be important in terms of economic impacts and changes in employment. **Usableincome** symbolizes disposable income or income level. This data can affect income levels and economic well-being. Migration in a particular region can cause changes in income distribution and living standards in that region.
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Click the see the code"
 #| warning: false
 
 # importing necessary packages
@@ -34,13 +36,13 @@ library(tidyverse)
 library(readxl)
 library(readr)
 
-population <- read_excel("C:\\Users\\zeyne\\Desktop\\DataVizards_FinalDataFrame.xlsx")
+population <- read_excel("C:\\Users\\Melike\\Desktop\\DataAnalytics\\DataVizards_FinalDataFrame.xlsx")
 names(population) <- c('IDD','city','regionid','regions','totalpop','male','female','age04','age59','age1014','age1519','age2024','age2529','age3034','age3539','age4044','otherage','unknowns','doctorate','primaryedu','elementaryedu','highschool','literatebutnoschool','notliterate','middleschool','master','university','fertilityrate','electricity','numberofattempts','housingsalesnumbers')
 
-region26 <- read_excel("C:\\Users\\zeyne\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "Bolge26")
+region26 <- read_excel("C:\\Users\\Melike\\Desktop\\DataAnalytics\\DataVizards_FinalDataFrame.xlsx", sheet = "Bolge26")
 names(region26) <- c('region','region2id','workforce15plus','workforce1564','usableincome')
 
-migration <- read_excel("C:\\Users\\zeyne\\Desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "Goc Bilgileri")
+migration <- read_excel("C:\\Users\\Melike\\Desktop\\DataAnalytics\\DataVizards_FinalDataFrame.xlsx", sheet = "Goc Bilgileri")
 names(migration) <- c('IDD','male2','female2','turnbackfamily','unknowns2','betterlifecond','others','education','retirement','buyhome','familymig','finjob','maritalstatuschange','health','appointment','age04_2','age59_2','age1014_2','age1519_2','age2024_2','age2529_2','age3034_2','age3539_2','age4044_2','university2','highschool2','middleschool2', 'elementaryschool2')
 
 
