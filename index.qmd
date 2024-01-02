@@ -25,7 +25,7 @@ This is our template.
 
 # Project Topic
 
-We will carry out our project by considering 2021 internal migration data across Türkiye. Our main focus is In Migration of internal cities. In this regard, migration trends between different regions such as Eastern Anatolia, Southeastern Anatolia, Aegean, Marmara will be determined and migration relations between big cities and other cities will be analyzed in detail. The relationship between population density and migration will be determined by examining migration rates, especially in cities with large populations. Migration trends will be evaluated according to age groups, gender, educational status and reasons for migration. (retirement, appointment, etc.) Also, the economic development level of the economic region will be interpreted according to the labor force, household disposable income, number of enterprises, number of housing sales, etc. This comprehensive analysis will guide our project in understanding Turkey's migration situation.
+We will carry out our project by considering 2021 internal migration data across Turkey. Our main focus is In Migration of internal cities. In this regard, migration trends between different regions such as Eastern Anatolia, Southeastern Anatolia, Aegean, Marmara will be determined and migration relations between big cities and other cities will be analyzed in detail. The relationship between population density and migration will be determined by examining migration rates, especially in cities with large populations. Migration trends will be evaluated according to age groups, gender, educational status and reasons for migration. (retirement, appointment, etc.) Also, the economic development level of the economic region will be interpreted according to the labor force, household disposable income, number of enterprises, number of housing sales, etc. This comprehensive analysis will guide our project in understanding Turkey's migration situation.
 
 # Data Set
 
@@ -34,3 +34,7 @@ We will carry out our project by considering 2021 internal migration data across
 [Population](https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-data_vizards/raw/master/Dataframe/population_data.RData)
 
 [Data of 26 Region](https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-data_vizards/raw/master/Dataframe/region26_data.RData)
+
+# Key Takeaways
+
+1.  We had assumed that the highest migration due to retirement would be to the Central Anatolia Region or the Aegean Region. To validate this assumption, we created a migration value and cause graph. When looking at this graph, we observed that the highest migration is to the Marmara Region. To obtain more accurate results, we created a migration rate and cause graph. In this graph, we see that the highest migration is to the Black Sea and Aegean regions. So, we realized that part of our assumption is correct. Understanding the importance of creating a Rate graph, we concluded that we should make decisions based on this graph.

@@ -2,6 +2,10 @@
 title: "Analysis"
 ---
 
+# Key Takeaways
+
+1.  We had assumed that the highest migration due to retirement would be to the Central Anatolia Region or the Aegean Region. To validate this assumption, we created a migration value and cause graph. When looking at this graph, we observed that the highest migration is to the Marmara Region. To obtain more accurate results, we created a migration rate and cause graph. In this graph, we see that the highest migration is to the Black Sea and Aegean regions. So, we realized that part of our assumption is correct. Understanding the importance of creating a Rate graph, we concluded that we should make decisions based on this graph.
+
 ```{r}
 #| code-fold: true
 #| code-summary: "Click the see the code"
@@ -14,6 +18,7 @@ library(readr)
 library(gridExtra)
 library(dplyr)
 
+<<<<<<< Updated upstream
 population <- read_excel("C:\\Users\\Melike\\Desktop\\DataAnalytics\\DataVizards_FinalDataFrame.xlsx")
 names(population) <- c('IDD','city','regionid','regions','totalpop','male','female','age04','age59','age1014','age1519','age2024','age2529','age3034','age3539','age4044','otherage','unknowns','doctorate','primaryedu','elementaryedu','highschool','literatebutnoschool','notliterate','middleschool','master','university','fertilityrate','electricity','numberofattempts','housingsalesnumbers')
 
@@ -28,6 +33,15 @@ region26 <- read_excel("C:\\Users\\Melike\\Desktop\\DataAnalytics\\DataVizards_F
 names(region26) <- c('region','region2id','workforce15plus','workforce1564','usableincome')
 
 migration <- read_excel("C:\\Users\\Melike\\Desktop\\DataAnalytics\\DataVizards_FinalDataFrame.xlsx", sheet = "Goc Bilgileri")
+=======
+population <- read_excel("C:\\Users\\zeyne\\desktop\\DataVizards_FinalDataFrame.xlsx")
+names(population) <- c('IDD','city','regionid','regions','totalpop','male','female','age04','age59','age1014','age1519','age2024','age2529','age3034','age3539','age4044','otherage','unknowns','doctorate','primaryedu','elementaryedu','highschool','literatebutnoschool','notliterate','middleschool','master','university','fertilityrate','electricity','numberofattempts','housingsalesnumbers')
+
+region26 <- read_excel("C:\\Users\\zeyne\\desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "Bolge26")
+names(region26) <- c('region','region2id','workforce15plus','workforce1564','usableincome')
+
+migration <- read_excel("C:\\Users\\zeyne\\desktop\\DataVizards_FinalDataFrame.xlsx", sheet = "Goc Bilgileri")
+>>>>>>> Stashed changes
 names(migration) <- c('IDD','male2','female2','turnbackfamily','unknowns2','betterlifecond','others','education','retirement','buyhome','familymig','finjob','maritalstatuschange','health','appointment','age04_2','age59_2','age1014_2','age1519_2','age2024_2','age2529_2','age3034_2','age3539_2','age4044_2','university2','highschool2','middleschool2', 'elementaryschool2')
 
 
