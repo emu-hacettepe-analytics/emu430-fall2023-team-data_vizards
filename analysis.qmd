@@ -12,6 +12,8 @@ The aim of this project is to analyze internal migration data in Turkey and inve
 
 3.  The visual representation of migration numbers across different educational backgrounds highlights a compelling inverse relationship between education and migration. Doctoral and primary school-educated individuals show lower migration rates compared to high school and university-educated individuals. Individuals with higher education levels tend to migrate less. The scatter plot analysis reveals a lack of a straightforward correlation between the average education level and fertility rates across regions in the dataset. While some general trends emerge like higher education levels in certain regions coinciding with lower fertility rates outliers such as Central Anatolia and the Mediterranean Region defy these patterns.
 
+4. TÜİK has divided provinces into 26 regions based on geographical proximity, simplifying regional oversight and data collection as cities in these regions are closely clustered. The graph comparing workforce to usable income generally shows an increase in usable income as the workforce increases, yet this trend varies among regions. Additionally, the Usable Income data is calculated based on the Gini coefficient. The Gini coefficient, in turn, represents the distribution of usable income within a region. For example, according to 2021 TÜİK data, Istanbul's Gini coefficient of 0.43 compared to Izmir's 0.37 indicates a higher income inequality in Istanbul.
+
 # DATA PREPROCESSING
 
 ```{r}
