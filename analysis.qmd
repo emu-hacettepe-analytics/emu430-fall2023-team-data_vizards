@@ -441,14 +441,6 @@ In the analyzes made on a regional basis, no significant relationship is seen. I
 ```{r}
 #| code-fold: true
 #| code-summary: "Click the see the code"
-
-
-
-```
-
-```{r}
-#| code-fold: true
-#| code-summary: "Click the see the code"
 library(knitr)
 tablool<- data.frame(region26$region,region26$region2id)
 kable(head(tablool,26), align = "c") 
