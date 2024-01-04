@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -211,28 +211,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">melek</span><span class="sc">\\</span><span class="st">desktop</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">melike</span><span class="sc">\\</span><span class="st">desktop</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>)</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(population) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'IDD'</span>,<span class="st">'city'</span>,<span class="st">'regionid'</span>,<span class="st">'regions'</span>,<span class="st">'totalpop'</span>,<span class="st">'male'</span>,<span class="st">'female'</span>,<span class="st">'age04'</span>,<span class="st">'age59'</span>,<span class="st">'age1014'</span>,<span class="st">'age1519'</span>,<span class="st">'age2024'</span>,<span class="st">'age2529'</span>,<span class="st">'age3034'</span>,<span class="st">'age3539'</span>,<span class="st">'age4044'</span>,<span class="st">'otherage'</span>,<span class="st">'unknowns'</span>,<span class="st">'doctorate'</span>,<span class="st">'primaryedu'</span>,<span class="st">'elementaryedu'</span>,<span class="st">'highschool'</span>,<span class="st">'literatebutnoschool'</span>,<span class="st">'notliterate'</span>,<span class="st">'middleschool'</span>,<span class="st">'master'</span>,<span class="st">'university'</span>,<span class="st">'fertilityrate'</span>,<span class="st">'electricity'</span>,<span class="st">'numberofattempts'</span>,<span class="st">'housingsalesnumbers'</span>)</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>region26 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">melek</span><span class="sc">\\</span><span class="st">desktop</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Bolge26"</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>region26 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">melike</span><span class="sc">\\</span><span class="st">desktop</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Bolge26"</span>)</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(region26) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'region'</span>,<span class="st">'region2id'</span>,<span class="st">'workforce15plus'</span>,<span class="st">'workforce1564'</span>,<span class="st">'usableincome'</span>)</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>migration <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">melek</span><span class="sc">\\</span><span class="st">desktop</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">melek</span><span class="sc">\\</span><span class="st">desktop</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>migration <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">melike</span><span class="sc">\\</span><span class="st">desktop</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">melike</span><span class="sc">\\</span><span class="st">desktop</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>)</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(population) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'IDD'</span>,<span class="st">'city'</span>,<span class="st">'regionid'</span>,<span class="st">'regions'</span>,<span class="st">'totalpop'</span>,<span class="st">'male'</span>,<span class="st">'female'</span>,<span class="st">'age04'</span>,<span class="st">'age59'</span>,<span class="st">'age1014'</span>,<span class="st">'age1519'</span>,<span class="st">'age2024'</span>,<span class="st">'age2529'</span>,<span class="st">'age3034'</span>,<span class="st">'age3539'</span>,<span class="st">'age4044'</span>,<span class="st">'otherage'</span>,<span class="st">'unknowns'</span>,<span class="st">'doctorate'</span>,<span class="st">'primaryedu'</span>,<span class="st">'elementaryedu'</span>,<span class="st">'highschool'</span>,<span class="st">'literatebutnoschool'</span>,<span class="st">'notliterate'</span>,<span class="st">'middleschool'</span>,<span class="st">'master'</span>,<span class="st">'university'</span>,<span class="st">'fertilityrate'</span>,<span class="st">'electricity'</span>,<span class="st">'numberofattempts'</span>,<span class="st">'housingsalesnumbers'</span>)</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>region26 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">melek</span><span class="sc">\\</span><span class="st">desktop</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Bolge26"</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>region26 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">melike</span><span class="sc">\\</span><span class="st">desktop</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Bolge26"</span>)</span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(region26) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'region'</span>,<span class="st">'region2id'</span>,<span class="st">'workforce15plus'</span>,<span class="st">'workforce1564'</span>,<span class="st">'usableincome'</span>)</span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>migration <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">melek</span><span class="sc">\\</span><span class="st">desktop</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Goc Bilgileri"</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>migration <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">melike</span><span class="sc">\\</span><span class="st">desktop</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Goc Bilgileri"</span>)</span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">melek</span><span class="sc">\\</span><span class="st">desktop</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">melike</span><span class="sc">\\</span><span class="st">desktop</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>)</span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(population) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'IDD'</span>,<span class="st">'city'</span>,<span class="st">'regionid'</span>,<span class="st">'regions'</span>,<span class="st">'totalpop'</span>,<span class="st">'male'</span>,<span class="st">'female'</span>,<span class="st">'age04'</span>,<span class="st">'age59'</span>,<span class="st">'age1014'</span>,<span class="st">'age1519'</span>,<span class="st">'age2024'</span>,<span class="st">'age2529'</span>,<span class="st">'age3034'</span>,<span class="st">'age3539'</span>,<span class="st">'age4044'</span>,<span class="st">'otherage'</span>,<span class="st">'unknowns'</span>,<span class="st">'doctorate'</span>,<span class="st">'primaryedu'</span>,<span class="st">'elementaryedu'</span>,<span class="st">'highschool'</span>,<span class="st">'literatebutnoschool'</span>,<span class="st">'notliterate'</span>,<span class="st">'middleschool'</span>,<span class="st">'master'</span>,<span class="st">'university'</span>,<span class="st">'fertilityrate'</span>,<span class="st">'electricity'</span>,<span class="st">'numberofattempts'</span>,<span class="st">'housingsalesnumbers'</span>)</span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>region26 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">melek</span><span class="sc">\\</span><span class="st">desktop</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Bolge26"</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>region26 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">melike</span><span class="sc">\\</span><span class="st">desktop</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Bolge26"</span>)</span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(region26) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'region'</span>,<span class="st">'region2id'</span>,<span class="st">'workforce15plus'</span>,<span class="st">'workforce1564'</span>,<span class="st">'usableincome'</span>)</span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>migration <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">melek</span><span class="sc">\\</span><span class="st">desktop</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Goc Bilgileri"</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>migration <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">melike</span><span class="sc">\\</span><span class="st">desktop</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Goc Bilgileri"</span>)</span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(migration) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'IDD'</span>,<span class="st">'male2'</span>,<span class="st">'female2'</span>,<span class="st">'turnbackfamily'</span>,<span class="st">'unknowns2'</span>,<span class="st">'betterlifecond'</span>,<span class="st">'others'</span>,<span class="st">'education'</span>,<span class="st">'retirement'</span>,<span class="st">'buyhome'</span>,<span class="st">'familymig'</span>,<span class="st">'finjob'</span>,<span class="st">'maritalstatuschange'</span>,<span class="st">'health'</span>,<span class="st">'appointment'</span>,<span class="st">'age04_2'</span>,<span class="st">'age59_2'</span>,<span class="st">'age1014_2'</span>,<span class="st">'age1519_2'</span>,<span class="st">'age2024_2'</span>,<span class="st">'age2529_2'</span>,<span class="st">'age3034_2'</span>,<span class="st">'age3539_2'</span>,<span class="st">'age4044_2'</span>,<span class="st">'university2'</span>,<span class="st">'highschool2'</span>,<span class="st">'middleschool2'</span>, <span class="st">'elementaryschool2'</span>)</span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
@@ -707,15 +707,147 @@ educated_rate                        0.6996717      0.8014049     1.0000000</cod
 <div class="cell">
 <details>
 <summary>Click the see the code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(region26, <span class="fu">aes</span>(<span class="at">x =</span> workforce15plus, <span class="at">y =</span> usableincome, <span class="at">label =</span> region2id)) <span class="sc">+</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_text</span>(<span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Workforce ve Usable Income"</span>, <span class="at">x =</span> <span class="st">"Workforce"</span>, <span class="at">y =</span> <span class="st">"Usable Income"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>tablool<span class="ot">&lt;-</span> <span class="fu">data.frame</span>(region26<span class="sc">$</span>region,region26<span class="sc">$</span>region2id)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(tablool,<span class="dv">26</span>), <span class="at">align =</span> <span class="st">"c"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="analysis_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: center;">region26.region</th>
+<th style="text-align: center;">region26.region2id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Adana, Mersin</td>
+<td style="text-align: center;">TR62</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Ağrı, Kars, Iğdır, Ardahan</td>
+<td style="text-align: center;">TRA2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Ankara</td>
+<td style="text-align: center;">TR51</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Antalya, Isparta, Burdur</td>
+<td style="text-align: center;">TR61</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Aydın, Denizli, Muğla</td>
+<td style="text-align: center;">TR32</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Balıkesir, Çanakkale</td>
+<td style="text-align: center;">TR22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Bursa, Eskişehir, Bilecik</td>
+<td style="text-align: center;">TR41</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Erzurum, Erzincan, Bayburt</td>
+<td style="text-align: center;">TRA1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Gaziantep, Adıyaman, Kilis</td>
+<td style="text-align: center;">TRC1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Hatay, Kahramanmaraş, Osmaniye</td>
+<td style="text-align: center;">TR63</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">İstanbul</td>
+<td style="text-align: center;">TR10</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">İzmir</td>
+<td style="text-align: center;">TR31</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Kastamonu, Çankırı, Sinop</td>
+<td style="text-align: center;">TR82</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Kayseri, Sivas, Yozgat</td>
+<td style="text-align: center;">TR72</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Kırıkkale, Aksaray, Niğde, Nevşehir, Kırşehir</td>
+<td style="text-align: center;">TR71</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Kocaeli, Sakarya, Düzce, Bolu, Yalova</td>
+<td style="text-align: center;">TR42</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Konya, Karaman</td>
+<td style="text-align: center;">TR52</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Malatya, Elazığ, Bingöl, Tunceli</td>
+<td style="text-align: center;">TRB1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Manisa, Afyonkarahisar, Kütahya, Uşak</td>
+<td style="text-align: center;">TR33</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Mardin, Batman, Şırnak, Siirt</td>
+<td style="text-align: center;">TRC3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Samsun, Tokat, Çorum, Amasya</td>
+<td style="text-align: center;">TR83</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Şanlıurfa, Diyarbakır</td>
+<td style="text-align: center;">TRC2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Tekirdağ, Edirne, Kırklareli</td>
+<td style="text-align: center;">TR21</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Trabzon, Ordu, Giresun, Rize, Artvin, Gümüşhane</td>
+<td style="text-align: center;">TR90</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Van, Muş, Bitlis, Hakkari</td>
+<td style="text-align: center;">TRB2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Zonguldak, Karabük, Bartın</td>
+<td style="text-align: center;">TR81</td>
+</tr>
+</tbody>
+</table>
+</div>
+<details>
+<summary>Click the see the code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(region26, <span class="fu">aes</span>(<span class="at">x =</span> workforce15plus, <span class="at">y =</span> usableincome, <span class="at">group =</span> region2id)) <span class="sc">+</span> </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> region2id), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Workforce vs Usable Income"</span>, <span class="at">x =</span> <span class="st">"Workforce"</span>, <span class="at">y =</span> <span class="st">"Usable Income"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="analysis_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<div class="cell">
+<details>
+<summary>Click the see the code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(region26<span class="sc">$</span>usableincome, region26<span class="sc">$</span>workforce15plus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5162115</code></pre>
+</div>
+</div>
+<p>this</p>
 
 
 </section>
