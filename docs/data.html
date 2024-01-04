@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DataVizards’s Project Lab - Data</title>
+<title>DataVizards’s Project Lab - DATA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -142,7 +142,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#data-cleaning-and-eda-analysis" id="toc-data-cleaning-and-eda-analysis" class="nav-link active" data-scroll-target="#data-cleaning-and-eda-analysis">DATA CLEANING AND EDA ANALYSIS</a></li>
+  </ul>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
@@ -153,7 +159,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data</h1>
+<h1 class="title">DATA</h1>
 </div>
 
 
@@ -168,6 +174,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<section id="data-cleaning-and-eda-analysis" class="level1">
+<h1>DATA CLEANING AND EDA ANALYSIS</h1>
 <p>Data source: <a href="https://biruni.tuik.gov.tr/medas/?kn=95&amp;locale=tr">TÜİK</a></p>
 <p>We transferred the data we received from <strong>TÜİK</strong> as an Excel file onto R with the <strong><code>read_excel( )</code></strong> function in the <strong><code>readxl</code></strong> library.</p>
 <p>In this code, we created “region2id” column for cities in population data set by using region26 data set. Our aim is to have common area (column) for all the data sets (population, region26 and migration) to study on the data sets comfortable. Additionaly, we renamed the columns to make it easier to work in R by using names() function. In this code, we created “region2id” column for cities in population data set by using region26 data set. Our aim is to have common area (column) for all the data sets (population, region26 and migration) to study on the data sets comfortable. Additionaly, We renamed the columns to make it easier to work in R by using names() function and we tidy up our data sets with the help of the <strong>pivot_longer()</strong> function to work with these datasets more flexibly and facilitate visualization. The tidy data sets names are <strong>last_migration_tidy_data, tidy_region26 and last_population_tidy_data</strong> respectively. Appart from this operation,using the population data set, we added the <strong>city column</strong> and <strong>region column</strong> to both the migration data set in tidy form and the migration data set in wide form to do better visualization.</p>
@@ -188,13 +196,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">Melike</span><span class="sc">\\</span><span class="st">Desktop</span><span class="sc">\\</span><span class="st">DataAnalytics</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">zeyne</span><span class="sc">\\</span><span class="st">Desktop</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(population) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'IDD'</span>,<span class="st">'city'</span>,<span class="st">'regionid'</span>,<span class="st">'regions'</span>,<span class="st">'totalpop'</span>,<span class="st">'male'</span>,<span class="st">'female'</span>,<span class="st">'age04'</span>,<span class="st">'age59'</span>,<span class="st">'age1014'</span>,<span class="st">'age1519'</span>,<span class="st">'age2024'</span>,<span class="st">'age2529'</span>,<span class="st">'age3034'</span>,<span class="st">'age3539'</span>,<span class="st">'age4044'</span>,<span class="st">'otherage'</span>,<span class="st">'unknowns'</span>,<span class="st">'doctorate'</span>,<span class="st">'primaryedu'</span>,<span class="st">'elementaryedu'</span>,<span class="st">'highschool'</span>,<span class="st">'literatebutnoschool'</span>,<span class="st">'notliterate'</span>,<span class="st">'middleschool'</span>,<span class="st">'master'</span>,<span class="st">'university'</span>,<span class="st">'fertilityrate'</span>,<span class="st">'electricity'</span>,<span class="st">'numberofattempts'</span>,<span class="st">'housingsalesnumbers'</span>)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>region26 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">Melike</span><span class="sc">\\</span><span class="st">Desktop</span><span class="sc">\\</span><span class="st">DataAnalytics</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Bolge26"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>region26 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">zeyne</span><span class="sc">\\</span><span class="st">Desktop</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Bolge26"</span>)</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(region26) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'region'</span>,<span class="st">'region2id'</span>,<span class="st">'workforce15plus'</span>,<span class="st">'workforce1564'</span>,<span class="st">'usableincome'</span>)</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>migration <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">Melike</span><span class="sc">\\</span><span class="st">Desktop</span><span class="sc">\\</span><span class="st">DataAnalytics</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Goc Bilgileri"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>migration <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">zeyne</span><span class="sc">\\</span><span class="st">Desktop</span><span class="sc">\\</span><span class="st">DataVizards_FinalDataFrame.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Goc Bilgileri"</span>)</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(migration) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'IDD'</span>,<span class="st">'male2'</span>,<span class="st">'female2'</span>,<span class="st">'turnbackfamily'</span>,<span class="st">'unknowns2'</span>,<span class="st">'betterlifecond'</span>,<span class="st">'others'</span>,<span class="st">'education'</span>,<span class="st">'retirement'</span>,<span class="st">'buyhome'</span>,<span class="st">'familymig'</span>,<span class="st">'finjob'</span>,<span class="st">'maritalstatuschange'</span>,<span class="st">'health'</span>,<span class="st">'appointment'</span>,<span class="st">'age04_2'</span>,<span class="st">'age59_2'</span>,<span class="st">'age1014_2'</span>,<span class="st">'age1519_2'</span>,<span class="st">'age2024_2'</span>,<span class="st">'age2529_2'</span>,<span class="st">'age3034_2'</span>,<span class="st">'age3539_2'</span>,<span class="st">'age4044_2'</span>,<span class="st">'university2'</span>,<span class="st">'highschool2'</span>,<span class="st">'middleschool2'</span>, <span class="st">'elementaryschool2'</span>)</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
@@ -289,6 +297,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
