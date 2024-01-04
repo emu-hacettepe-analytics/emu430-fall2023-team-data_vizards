@@ -10,7 +10,7 @@ The aim of this project is to analyze internal migration data in Turkey and inve
 
 2.  The age range of the people who migrate the most is seen in the graph as 20-24. The age group of the people who migrated the second most is seen in the graph as 15-19. In the graph of reasons for migration, the most common reason for migration was observed to be education. We can reconcile this incident with this situation.
 
-3.  The visual representation of migration numbers across different educational backgrounds highlights a compelling inverse relationship between education and migration. Doctoral and primary school-educated individuals show lower migration rates compared to high school and university-educated individuals. Individuals with higher education levels tend to migrate less. The scatter plot analysis reveals a lack of a straightforward correlation between the average education level and fertility rates across regions in the dataset. While some general trends emerge—like higher education levels in certain regions coinciding with lower fertility rates—outliers such as Central Anatolia and the Mediterranean Region defy these patterns.
+3.  The visual representation of migration numbers across different educational backgrounds highlights a compelling inverse relationship between education and migration. Doctoral and primary school-educated individuals show lower migration rates compared to high school and university-educated individuals. Individuals with higher education levels tend to migrate less. The scatter plot analysis reveals a lack of a straightforward correlation between the average education level and fertility rates across regions in the dataset. While some general trends emerge like higher education levels in certain regions coinciding with lower fertility rates outliers such as Central Anatolia and the Mediterranean Region defy these patterns.
 
 # DATA PREPROCESSING
 
@@ -346,7 +346,7 @@ ggplot(education_migration, aes(x = education_level, y = migration_count, fill =
     fill = "Education Level"  # Legend label
   ) +
   theme_minimal() +  # Applying a minimal theme to the plot
-  scale_y_continuous(labels = scales::comma)  # Formatting Y-axis labels with commas for thousands
+  scale_y_continuous(trans = "log2" )  # Formatting Y-axis labels with commas for thousands
 
 ```
 
