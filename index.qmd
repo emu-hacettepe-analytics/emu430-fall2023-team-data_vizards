@@ -1,12 +1,11 @@
 ---
 title: "TEAM DATA VIZARDS"
 sidebar: false 
-
 ---
 
-![](images/DataVizards 2.gif){width="304"}
+![](images/DataVizards%202.gif){width="304"}
 
-This is our project webpage.
+Hello! Welcome to our project webpage. We are team Data Vizards and we are exploring Turkey's internal migration data.
 
 Please stay tuned to follow our project activities.
 
