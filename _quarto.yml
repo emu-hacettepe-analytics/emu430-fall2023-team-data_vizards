@@ -19,12 +19,12 @@ website:
             
     tools:
       - icon: github
-        href: https://twitter.com
+        href: https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-data_vizards
 
   page-navigation: true
   back-to-top-navigation: true
   page-footer:
-    center: "Hacettepe IE - EMU 430 - Fall 2023" 
+    center: "The data's journey: Migration, where lines of code traverse the landscapes of analytics."
     border: true
 format:
   html:
